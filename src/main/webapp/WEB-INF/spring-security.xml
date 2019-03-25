@@ -11,15 +11,15 @@
         <intercept-url pattern="/colaborador/**" access="ROLE_C, ROLE_A" />
         <intercept-url pattern="/usuario/**" access="ROLE_A, ROLE_C" />        
         <form-login 
-            login-page="/login.xhtml"
+            login-page="/index.xhtml"
             authentication-success-handler-ref="myLoginHandler" 
-            authentication-failure-url = "/login.xhtml?e=-1"/>
+            authentication-failure-url = "/index.xhtml?e=-1"/>
         <access-denied-handler error-page="/acessoNegado.xhtml"/>
         <logout invalidate-session="true"/>
         <!--<remember-me token-validity-seconds="3600"/>-->
         <session-management 
             session-fixation-protection="newSession"
-            invalid-session-url="/login.xhtml"/>
+            invalid-session-url="/index.xhtml"/>
     </http>
     
     <beans:bean 

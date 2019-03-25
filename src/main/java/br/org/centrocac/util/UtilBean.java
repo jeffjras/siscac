@@ -116,7 +116,7 @@ public class UtilBean {
                 contaTemp.setNome(colaborador.getNome());
                 contaTemp.setEmail(colaborador.getEmail());
                 contaTemp.setPerfil(colaborador.getPerfil());
-                contaTemp.setConfirmacao(colaborador.getConfirmacao());
+                //contaTemp.setConfirmacao(colaborador.getConfirmacao());
             }
             UtilBean.naSessao(CHAVE_CONTA, contaTemp);
             return contaTemp;

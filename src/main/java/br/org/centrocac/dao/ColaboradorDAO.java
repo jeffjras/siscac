@@ -44,8 +44,8 @@ public class ColaboradorDAO extends GenericDAO<Colaborador> {
         EntityManager em = getEntityManager();
         String sql = "Select c from Colaborador c "
                 + "where c.email = :email "
-                + "and c.senha = :senha "
-                + "and c.confirmacao is null";
+                + "and c.senha = :senha ";
+                //+ "and c.confirmacao is null";
         Query query = em.createQuery(sql);
 
         boolean resposta = Boolean.FALSE;

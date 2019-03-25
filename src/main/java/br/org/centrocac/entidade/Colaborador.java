@@ -44,8 +44,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Colaborador.findBySenha", query = "SELECT c FROM Colaborador c WHERE c.senha = :senha")
     , @NamedQuery(name = "Colaborador.findByPerfil", query = "SELECT c FROM Colaborador c WHERE c.perfil = :perfil")
     , @NamedQuery(name = "Colaborador.findByProfissao", query = "SELECT c FROM Colaborador c WHERE c.profissao = :profissao")
-    , @NamedQuery(name = "Colaborador.findByComoColaborar", query = "SELECT c FROM Colaborador c WHERE c.comoColaborar = :comoColaborar")
-    , @NamedQuery(name = "Colaborador.findByConfirmacao", query = "SELECT c FROM Colaborador c WHERE c.confirmacao = :confirmacao")})
+    , @NamedQuery(name = "Colaborador.findByComoColaborar", query = "SELECT c FROM Colaborador c WHERE c.comoColaborar = :comoColaborar")})
+    //, @NamedQuery(name = "Colaborador.findByConfirmacao", query = "SELECT c FROM Colaborador c WHERE c.confirmacao = :confirmacao")})
 public class Colaborador implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -105,9 +105,9 @@ public class Colaborador implements Serializable {
     @Size(max = 250)
     @Column(name = "comoColaborar")
     private String comoColaborar;
-    @Size(max = 10)
+    /*@Size(max = 10)
     @Column(name = "confirmacao")
-    private String confirmacao;
+    private String confirmacao;*/
     @OneToMany(mappedBy = "colaborador")
     private List<Doacao> doacaoList;
 
@@ -240,13 +240,13 @@ public class Colaborador implements Serializable {
         this.comoColaborar = comoColaborar;
     }
 
-    public String getConfirmacao() {
+    /*public String getConfirmacao() {
         return confirmacao;
     }
 
     public void setConfirmacao(String confirmacao) {
         this.confirmacao = confirmacao;
-    }
+    }*/
 
     @XmlTransient
     public List<Doacao> getDoacaoList() {
