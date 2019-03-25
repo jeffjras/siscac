@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:head>
+        <title>Login</title>
+    </h:head>
+
+    <h:body>
+        <form 
+            id="formLogin"
+            action="#{request.contextPath}/j_spring_security_check"
+            method="post">
+            <h:outputText value="E-mail ou senha inválidos"
+                          rendered="#{loginBean.erroAoAutenticar(param)}"
+                          style="color: red; font-size: 1.2em; "/>
+            <h:panelGrid columns="1">
+
+                <p:inputText
+                    id="j_username" 
+                    required="true" 
+                    placeholder="E-mail" 
+                    />
+                <p:password id="j_password" placeholder="Senha" />
+            </h:panelGrid>
+            <p:commandButton onclick="#{request.contextPath} / j_spring_security_check" value="Acessar" styleClass="Fs14"/>
+        </form>
+    </h:body>
+</html>
