@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+body {
+    background: #f9f9f9;
+    margin: auto 0;
+}
+
+img.logo {
+    margin: 25% 0;
+    
+}
+
+.container-sec {    
+    padding: 10px;
+    width: 80%;
+    margin-top: 40px;
+    border: 1px solid #d3d3d3;
+    background-color: #fff;
+    box-shadow: 0px 0px 4px #d3d3d3;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13pt;
+}
+
+
+.cabecalho-login h1{
+    color: #3c7a89;
+}
+.cabecalho-login p{
+    font-size: 14pt;
+    color: #9fa2b2;
+}
+
+.main-login {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.rodape-login{
+    color: #9fa2b2;
+}
+.rodape-login a {
+    font-size: 13pt;
+}
+
+.rodape-form{
+    color: #9fa2b2;
+}
