@@ -18,6 +18,22 @@ public class AuthenticationHandler implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication a) throws AuthenticationException {
+        
+//        String login = a.getName();
+//        String senha = a.getCredentials().toString();
+//        ShaPasswordEncoder sha = new ShaPasswordEncoder(256);
+//        String senhaCripto = sha.encodePassword(senha, null);
+//        UsuarioRN RN = new UsuarioRN();
+//        Usuario user = RN.login(login, senhaCripto);
+//        if (user != null) {
+//            GrantedAuthorityImpl ga = new GrantedAuthorityImpl("ROLE_" + user.getPerfil());
+//            List<GrantedAuthority> auts = new ArrayList<GrantedAuthority>();
+//            auts.add(ga);
+//            return new UsernamePasswordAuthenticationToken(login, senhaCripto, auts);
+//        } else {
+//            throw new BadCredentialsException("Email, celular ou senha inválidos");
+//        }                        
+        
         String username = a.getName();
         String password = DonazioneUtil.encriptarSHA256(a.getCredentials().toString());
         ColaboradorRN colaboradorRN = new ColaboradorRN();

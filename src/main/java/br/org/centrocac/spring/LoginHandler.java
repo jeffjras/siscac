@@ -5,6 +5,8 @@
  */
 package br.org.centrocac.spring;
 
+import br.org.centrocac.entidade.Colaborador;
+import br.org.centrocac.rn.ColaboradorRN;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,13 +19,17 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
  * @author bpmlab
  */
 public class LoginHandler extends SimpleUrlAuthenticationSuccessHandler {
+    
+    private final ColaboradorRN RN = new ColaboradorRN();
 
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request,
-            HttpServletResponse response,
-            Authentication a) throws IOException, ServletException {
-        String pagina = "/usuario/inicio.xhtml";
-        
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication a) throws IOException, ServletException {
+        String username = a.getName();
+        Colaborador usuario = RN.obter(username);
+        String pagina = "/index.xhtml";
+        if (usuario != null) {
+            pagina = "/usuario/main.xhtml";
+        }
         setDefaultTargetUrl(pagina);
         super.onAuthenticationSuccess(request, response, a);
     }

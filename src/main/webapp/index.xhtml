@@ -51,6 +51,9 @@
 				            <h:outputText value="E-mail ou senha inválidos"
 	                          rendered="#{loginBean.erroAoAutenticar(param)}"
 	                          style="color: red; font-size: 1.2em; "/>
+	                        <h:outputText value="Seus dados de Acesso foram excluídos"
+	                          rendered="#{loginBean.avisoAoExcluir(param)}"
+	                          style="color: red; font-size: 1.2em; "/>  
                             <div class="form-group">
                                 <!-- input type="email" class="form-control" placeholder="Email" required -->
                                 <p:inputText id="j_username" required="true" placeholder="E-mail" />                
@@ -87,7 +90,7 @@
                     </div>
                       
                     <div class="rodape-login">
-                        Não tem uma Conta? <a href="#" class="btn btn-link">Cadastre-se!</a>
+                        Não tem uma Conta? <a href="#{request.contextPath}/novoCadastro.xhtml" class="btn btn-link">Cadastre-se!</a>
                     </div>
                        
                </div>

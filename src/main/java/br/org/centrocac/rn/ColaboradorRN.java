@@ -8,6 +8,7 @@ package br.org.centrocac.rn;
 import br.org.centrocac.dao.ColaboradorDAO;
 import br.org.centrocac.entidade.Colaborador;
 import br.org.centrocac.util.DonazioneUtil;
+
 import java.util.List;
 
 /**
@@ -30,6 +31,10 @@ public class ColaboradorRN {
                 return COLABORADOR_DAO.alterar(colaborador);
             }
         }
+    }
+    
+    public List<Colaborador> listar() {
+        return COLABORADOR_DAO.obterTodos(Colaborador.class);
     }
 
     public boolean excluir(Colaborador colaborador) {
