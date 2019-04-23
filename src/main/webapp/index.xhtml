@@ -51,25 +51,17 @@
 				            <h:outputText value="E-mail ou senha inválidos"
 	                          rendered="#{loginBean.erroAoAutenticar(param)}"
 	                          style="color: red; font-size: 1.2em; "/>
-                            <div class="form-group">
-                                <!-- input type="email" class="form-control" placeholder="Email" required -->
-                                <p:inputText id="j_username" required="true" placeholder="E-mail" />                
-                            </div>
-                            <!--<div class="form-group">
-                                <input type="text" class="form-control" placeholder="Usuário" required>
-                            </div>-->
-                            <div class="form-group">
-                                <!-- input type="password" class="form-control" placeholder="Senha" required -->
-                                <p:password id="j_password" placeholder="Senha" />
-                            </div>
-                            <!--<div class="form-group">
-                                <input type="password" class="form-control" placeholder="Confirmar senha" required>
-                            </div>-->
-                            
-                            <div class="form-group rodape-form">
-                                <!--  button type="submit" class="btn btn-primary btn-block">Cadastre-se</button -->
-                                <p:commandButton class="btn btn-primary btn-block" onclick="#{request.contextPath} / j_spring_security_check" value="Entrar" styleClass="Fs14"/>
-                                <!--<p>Ao cadastrar-se, você concorda com nossos Termos e Política de Privacidade.</p>-->    
+	                        <h:outputText value="Seus dados de Acesso foram excluídos"
+	                          rendered="#{loginBean.avisoAoExcluir(param)}"
+	                          style="color: red; font-size: 1.2em; "/>  
+                            <div class="form-group">                               
+                                <p:inputText id="j_username" required="true" placeholder="E-mail" class="form-control border-input"/>                
+                            </div>                            
+                            <div class="form-group">                                
+                                <p:password id="j_password" placeholder="Senha" class="form-control border-input"/>
+                            </div>                                                       
+                            <div class="form-group rodape-form">                                
+                                <p:commandButton class="btn btn-primary btn-block" onclick="#{request.contextPath} / j_spring_security_check" value="Entrar" styleClass="Fs14"/>                                    
                             </div>
                         </form>   
                     </div>
@@ -87,7 +79,7 @@
                     </div>
                       
                     <div class="rodape-login">
-                        Não tem uma Conta? <a href="#" class="btn btn-link">Cadastre-se!</a>
+                        Não tem uma Conta? <a href="#{request.contextPath}/novoCadastro.xhtml" class="btn btn-link">Cadastre-se!</a>
                     </div>
                        
                </div>

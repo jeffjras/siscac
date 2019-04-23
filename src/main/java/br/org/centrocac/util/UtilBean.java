@@ -115,8 +115,18 @@ public class UtilBean {
                 contaTemp.setId(colaborador.getId());
                 contaTemp.setNome(colaborador.getNome());
                 contaTemp.setEmail(colaborador.getEmail());
+                contaTemp.setSenha(colaborador.getSenha());
                 contaTemp.setPerfil(colaborador.getPerfil());
-                //contaTemp.setConfirmacao(colaborador.getConfirmacao());
+                contaTemp.setCelular(colaborador.getCelular());
+                contaTemp.setLogradouro(colaborador.getLogradouro());
+                contaTemp.setNumero(colaborador.getNumero());
+                contaTemp.setComplemento(colaborador.getComplemento());
+                contaTemp.setBairro(colaborador.getBairro());
+                contaTemp.setCep(colaborador.getCep());
+                contaTemp.setCpfOuCnpj(colaborador.getCpfOuCnpj());
+                contaTemp.setProfissao(colaborador.getProfissao());
+                contaTemp.setComoColaborar(colaborador.getComoColaborar());
+                //contaTemp.setConfirmacao(colaborador.getConfirmacao());                
             }
             UtilBean.naSessao(CHAVE_CONTA, contaTemp);
             return contaTemp;

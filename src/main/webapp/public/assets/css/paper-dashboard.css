@@ -574,24 +574,11 @@ body.swal2-iosfix {
   margin-right: 10px;
 }
 
-@supports (-ms-accelerator: true) {
-  .swal2-range input {
-    width: 100% !important;
-  }
 
   .swal2-range output {
     display: none;
   }
-}
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  .swal2-range input {
-    width: 100% !important;
-  }
-
-  .swal2-range output {
-    display: none;
-  }
-}
+  
 .swal2-icon {
   width: 80px;
   height: 80px;
@@ -3857,11 +3844,11 @@ be a descendant of the grid when it is being dragged.
   -ms-overflow-style: none;
 }
 
-@supports (-ms-overflow-style: none) {
+/*@supports (-ms-overflow-style: none) {
   .ps-container {
     overflow: auto !important;
   }
-}
+}*/
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .ps-container {
     overflow: auto !important;
