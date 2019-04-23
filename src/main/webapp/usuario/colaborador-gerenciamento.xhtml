@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/layout.xhtml">
+
+    <ui:define name="content">
+
+        <h:form id="formGerencia">
+            <p:growl showDetail="true" showSummary="true" />
+
+            <p:messages id="mensagem"/>
+
+            <p:panelGrid id="panelGrid" columns="1">
+                <p:commandButton value="Novo Colaborador" styleClass="green-btn"
+                                 action="colaborador-form.xhtml" />
+            </p:panelGrid>
+
+            <p:panelGrid id="panelGridDataTable" columns="1">
+                <p:dataTable var="entidade" value="#{colaboradorBean.entidadeList}">
+                    <f:facet name="header">
+                        Lista de Colaboradores
+                    </f:facet>
+                    <p:column headerText="Id">
+                        <h:outputText value="#{entidade.id}" />
+                    </p:column>
+
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{entidade.nome}" />
+                    </p:column>
+
+                    <p:column headerText="operações">
+                        <p:commandButton id="linkEdit" immediate="true"
+                                         alt="Editar Registro" title="Editar Registro"
+                                         icon="ui-icon-pencil" 
+                                         action="#{colaboradorBean.goToEditar}"
+                                         actionListener="#{colaboradorBean.setEntidade(entidade)}">
+                        </p:commandButton>
+                        |
+                        <p:commandButton id="linkRemove" icon="ui-icon-trash"
+                                         immediate="true" alt="Remover Registro" title="Remover Registro"
+                                         action="#{colaboradorBean.excluir}" ajax="true"
+                                         update=":formGerencia:panelGridDataTable">
+                            <f:setPropertyActionListener value="#{entidade}"
+                                                         target="#{colaboradorBean.entidade}" />
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -101,6 +101,12 @@ public class UtilBean {
         sessao.put(chave, valor);
     }
 
+    public static void removerDaSessao(String chave) {
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        Map<String, Object> sessao = externalContext.getSessionMap();
+        sessao.remove(chave);
+    }
+
     public static Colaborador obterContaLogada() {
         final String CHAVE_CONTA = "conta";
         Object objColaborador = UtilBean.daSessao(CHAVE_CONTA);
