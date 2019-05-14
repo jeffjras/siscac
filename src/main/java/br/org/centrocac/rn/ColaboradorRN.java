@@ -6,8 +6,10 @@
 package br.org.centrocac.rn;
 
 import br.org.centrocac.dao.ColaboradorDAO;
+import br.org.centrocac.entidade.Acao;
 import br.org.centrocac.entidade.Colaborador;
 import br.org.centrocac.util.DonazioneUtil;
+import java.util.ArrayList;
 
 import java.util.List;
 
@@ -32,7 +34,7 @@ public class ColaboradorRN {
             }
         }
     }
-    
+
     public List<Colaborador> listar() {
         return COLABORADOR_DAO.obterTodos(Colaborador.class);
     }
@@ -45,7 +47,7 @@ public class ColaboradorRN {
         }
     }
 
-    List<Colaborador> obterTodos() {
+    public List<Colaborador> obterTodos() {
         return COLABORADOR_DAO.obterTodos(Colaborador.class);
     }
 
@@ -61,4 +63,16 @@ public class ColaboradorRN {
         return COLABORADOR_DAO.autenticar(email, senha);
     }
 
+    public List<Colaborador> obterTodosVoluntariosPorAcao(Acao acao) {
+        System.out.println(acao);
+        List<Colaborador> resposta = new ArrayList<>();
+        if (acao == null) {
+            System.out.println("aco null");
+            resposta = COLABORADOR_DAO.obterTodosVoluntarios();
+        } else {
+            System.out.println("aco not null");
+            resposta = COLABORADOR_DAO.obterTodosVoluntariosPorAcao(acao);
+        }
+        return resposta;
+    }
 }

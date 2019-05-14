@@ -2,7 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c9f5acd-5151-47cb-9071-938664bdb306" name="Default Changelist" comment="tela de acao e colaborador">
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/util/UtilBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/util/UtilBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/AcaoPorVoluntarioBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/CampanhaBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/VoluntarioPorAcaoBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/converter/AcaoConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/converter/ColaboradorConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/util/MailUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/administrador/campanha.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/administrador/listarCampanha.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/jquery.dataTables.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/themify.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/themify.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/sort_asc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/sort_asc_disabled.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/sort_both.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/sort_desc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/sort_desc_disabled.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery-3.1.1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery.dataTables.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/templates/layout.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/usuario/acaoForm.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/usuario/campanhaLista.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/usuario/listarAcao.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/usuario/listarAcaoPorVoluntarioBackup.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/usuario/listarVoluntarios.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/usuario/listarVoluntariosPorAcaoBackup.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/AcaoBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/AcaoBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/AcaoFormBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/AcaoFormBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/conversor/FacesConverterLocalDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/converter/FacesConverterLocalDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/dao/AcaoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/dao/AcaoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/dao/CampanhaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/dao/CampanhaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/dao/ColaboradorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/dao/ColaboradorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/Acao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/Acao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/Colaborador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/Colaborador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/rn/AcaoRN.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/rn/AcaoRN.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/rn/ColaboradorRN.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/rn/ColaboradorRN.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/public/assets/css/paper-dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/public/assets/css/paper-dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/paper-dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/paper-dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery-3.1.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery-3.1.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/template.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/template.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/usuario/acao-form.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usuario/acaoFormBackup.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/usuario/acao-gerenciamento.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usuario/listarAcaoBackup.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/usuario/doacao-gerenciamento.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usuario/doacaoGerenciamento.xhtml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -16,11 +60,11 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/ColaboradorBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
+            <state relative-caret-position="135">
               <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
@@ -39,7 +83,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/br/org/centrocac/rn/DoacaoRN.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -157,45 +201,64 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Donazione" type="b2602c69:ProjectViewProjectNode" />
+              <item name="siscac" type="b2602c69:ProjectViewProjectNode" />
               <item name="siscac" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Donazione" type="b2602c69:ProjectViewProjectNode" />
-              <item name="siscac" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Donazione" type="b2602c69:ProjectViewProjectNode" />
+              <item name="siscac" type="b2602c69:ProjectViewProjectNode" />
               <item name="siscac" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Donazione" type="b2602c69:ProjectViewProjectNode" />
+              <item name="siscac" type="b2602c69:ProjectViewProjectNode" />
               <item name="siscac" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Donazione" type="b2602c69:ProjectViewProjectNode" />
+              <item name="siscac" type="b2602c69:ProjectViewProjectNode" />
               <item name="siscac" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="usuario" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="siscac" type="b2602c69:ProjectViewProjectNode" />
+              <item name="siscac" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="br" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="siscac" type="b2602c69:ProjectViewProjectNode" />
+              <item name="siscac" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="br" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="siscac" type="b2602c69:ProjectViewProjectNode" />
+              <item name="siscac" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="br" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="centrocac" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -236,9 +299,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <frame x="0" y="25" width="1366" height="743" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25379092" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2659091" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -272,7 +335,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/ColaboradorBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
+        <state relative-caret-position="135">
           <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
@@ -287,7 +350,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/br/org/centrocac/rn/DoacaoRN.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

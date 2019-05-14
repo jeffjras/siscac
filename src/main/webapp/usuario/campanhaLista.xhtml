@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    template="/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    >
+
+    <ui:define name="title">
+        Listagem de Campanhas
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="formProfessor">
+            <p:growl showDetail="true" showSummary="true" />
+
+            <h1>Campanhas</h1>
+            
+            <p:commandButton action="campanhaForm.xhtml" value="Nova Campanha"/>
+            <!-- p:commandButton action="institutos.xhtml" value="Listar Institutos"/ -->
+
+            <br/>
+            <br/>
+
+            <p:dataTable value="#{professorBean.professores}" var="a">
+                <p:column headerText="Nome">
+                    <h:outputText value="#{a.nome}"/>
+                </p:column>
+
+                <p:column headerText="Titulação">
+                    <h:outputText value="#{a.titulacao}"/>
+                </p:column>                                               
+
+                <p:column headerText="Operações">
+                    <p:commandButton 
+                        value="Editar"
+                        action="/professor.xhtml"
+                        ajax="false">
+                        <f:setPropertyActionListener target="#{professorBean.professor}" value="#{a}"/>
+                    </p:commandButton>                    
+
+                    <p:commandButton 
+                        value="Excluir"
+                        action="#{professorBean.excluir()}"
+                        ajax="false">
+                        <f:setPropertyActionListener target="#{professorBean.professor}" value="#{a}"/>
+                    </p:commandButton>
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

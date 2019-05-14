@@ -7,12 +7,15 @@ package br.org.centrocac.entidade;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -30,14 +33,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "acao")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Acao.findAll", query = "SELECT a FROM Acao a")
-    , @NamedQuery(name = "Acao.findById", query = "SELECT a FROM Acao a WHERE a.id = :id")
-    , @NamedQuery(name = "Acao.findByNome", query = "SELECT a FROM Acao a WHERE a.nome = :nome")
-    , @NamedQuery(name = "Acao.findByDescricao", query = "SELECT a FROM Acao a WHERE a.descricao = :descricao")
-    , @NamedQuery(name = "Acao.findByInicio", query = "SELECT a FROM Acao a WHERE a.inicio = :inicio")
-    , @NamedQuery(name = "Acao.findByFim", query = "SELECT a FROM Acao a WHERE a.fim = :fim")
-    , @NamedQuery(name = "Acao.findByCadastro", query = "SELECT a FROM Acao a WHERE a.cadastro = :cadastro")
-    , @NamedQuery(name = "Acao.findByCargaHoraria", query = "SELECT a FROM Acao a WHERE a.cargaHoraria = :cargaHoraria")})
+    @NamedQuery(name = "Acao.findAll", query = "SELECT a FROM Acao a"),
+    @NamedQuery(name = "Acao.findById", query = "SELECT a FROM Acao a WHERE a.id = :id"),
+    @NamedQuery(name = "Acao.findByNome", query = "SELECT a FROM Acao a WHERE a.nome = :nome"),
+    @NamedQuery(name = "Acao.findByDescricao", query = "SELECT a FROM Acao a WHERE a.descricao = :descricao"),
+    @NamedQuery(name = "Acao.findByInicio", query = "SELECT a FROM Acao a WHERE a.inicio = :inicio"),
+    @NamedQuery(name = "Acao.findByFim", query = "SELECT a FROM Acao a WHERE a.fim = :fim"),
+    @NamedQuery(name = "Acao.findByCadastro", query = "SELECT a FROM Acao a WHERE a.cadastro = :cadastro"),
+    @NamedQuery(name = "Acao.findByCargaHoraria", query = "SELECT a FROM Acao a WHERE a.cargaHoraria = :cargaHoraria")})
 public class Acao implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -75,6 +78,9 @@ public class Acao implements Serializable {
     @NotNull
     @Column(name = "cargaHoraria")
     private int cargaHoraria;
+
+    @ManyToMany(mappedBy = "acaoList")
+    private List<Colaborador> voluntariosList;
 
     public Acao() {
     }
@@ -149,29 +155,66 @@ public class Acao implements Serializable {
         this.cargaHoraria = cargaHoraria;
     }
 
+    public List<Colaborador> getVoluntariosList() {
+        return voluntariosList;
+    }
+
+    public void setVoluntariosList(List<Colaborador> voluntariosList) {
+        this.voluntariosList = voluntariosList;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 59 * hash + Objects.hashCode(this.nome);
+        hash = 59 * hash + Objects.hashCode(this.descricao);
+        hash = 59 * hash + Objects.hashCode(this.inicio);
+        hash = 59 * hash + Objects.hashCode(this.fim);
+        hash = 59 * hash + Objects.hashCode(this.cadastro);
+        hash = 59 * hash + this.cargaHoraria;
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Acao)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        Acao other = (Acao) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Acao other = (Acao) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        if (!Objects.equals(this.inicio, other.inicio)) {
+            return false;
+        }
+        if (!Objects.equals(this.fim, other.fim)) {
+            return false;
+        }
+        if (!Objects.equals(this.cadastro, other.cadastro)) {
+            return false;
+        }
+        if (this.cargaHoraria != other.cargaHoraria) {
             return false;
         }
         return true;
     }
 
+    
+    
+
     @Override
     public String toString() {
-        return "br.org.centrocac.entidade.Acao[ id=" + id + " ]";
+        return "Acao{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", inicio=" + inicio + ", fim=" + fim + ", cadastro=" + cadastro + ", cargaHoraria=" + cargaHoraria + ", voluntariosList=" + voluntariosList + '}';
     }
-    
+
 }

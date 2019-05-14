@@ -15,11 +15,11 @@
 
             <p:panelGrid id="panelGrid" columns="1">
                 <p:commandButton value="Nova Ação" styleClass="green-btn"
-                                 action="acao-form.xhtml" />
+                                 action="acaoFormBackup.xhtml" />
             </p:panelGrid>
 
             <p:panelGrid id="panelGridDataTable" columns="1">
-                <p:dataTable var="entidade" value="#{acaocolaboradorBean.entidadeList}">
+                <p:dataTable var="entidade" value="#{acaoBean.entidadeList}">
                     <f:facet name="header">
                         Lista de Ações
                     </f:facet>

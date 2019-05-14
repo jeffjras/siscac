@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Saúde em Foco</title>
+    </h:head>
+    <h:body>
+        <div></div>
+        <ui:insert name="header">
+            <h:form>
+                <p:menubar>
+                    <p:submenu label="Campanhas" icon="pi pi-pencil">
+                        <p:menuitem value="ListarCampanhas(Todo)" icon="pi pi-times"
+                                    outcome="listarAcaoBackup.xhtml" />
+                        <p:menuitem value="Listar Doações(Todo)" icon="pi pi-times"
+                                    outcome="listarAcaoBackup.xhtml" />
+                        <p:menuitem value="Pesquisar Doador (Todo)" icon="pi pi-times"
+                                    outcome="listarAcaoBackup.xhtml" />
+                    </p:submenu>
+
+                    <p:submenu label="Acões" icon="pi pi-pencil">
+                        <p:menuitem value="Listar Acões" icon="pi pi-times"
+                                    outcome="listarAcaoBackup.xhtml" />
+                        <p:menuitem value="Listar Voluntários por ação" icon="pi pi-times"
+                                    outcome="listarVoluntariosPorAcaoBackup.xhtml" />
+                        <p:menuitem value="Pesquisar ações por voluntário" icon="pi pi-times"
+                                    outcome="listarAcaoPorVoluntarioBackup.xhtml" />
+                    </p:submenu>
+
+                    <p:submenu label="Gerenciamento" icon="pi pi-pencil">
+                        <p:menuitem value="Listar Doações Realizadas(Todo)" icon="pi pi-times"
+                                    outcome="listarAcaoBackup.xhtml" />
+                        <p:menuitem value="Emitir Recibo das doações (Todo)" icon="pi pi-times"
+                                    outcome="listarAcaoBackup.xhtml" />
+                        <p:menuitem value="Listar Ações Realizadas (Todo)" icon="pi pi-times"
+                                    outcome="listarAcaoBackup.xhtml" />
+                    </p:submenu>
+                </p:menubar>
+            </h:form>
+        </ui:insert>
+
+        <ui:insert name="content">
+            <ui:include src="/listarAcaoBackup.xhtml" />
+        </ui:insert>
+    </h:body>
+</html>

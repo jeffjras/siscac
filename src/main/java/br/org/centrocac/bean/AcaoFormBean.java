@@ -38,7 +38,8 @@ public class AcaoFormBean {
         if (id != null) {
             findOne((Integer) id);
         }
-        outcome = "acao-gerenciamento.xhtml?faces-redirect=true";
+        // outcome = "listarAcao.xhtml?faces-redirect=true";
+        outcome = "listarAcaoBackup.xhtml?faces-redirect=true";
     }
 
     public void findOne(Integer id) {

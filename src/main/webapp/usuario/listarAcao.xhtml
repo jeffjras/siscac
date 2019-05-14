@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <ui:define name="content">               
+        <div class="main-panel ps-container ps-theme-default ps-active-y"
+             data-ps-id="2917a5b5-a209-21fd-48dc-2abf6ed3d40a">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-minimize">
+                        <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-more-alt"></i></button>
+                    </div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle">
+                            <span class="sr-only">Toggle navigation</span> <span
+                                class="icon-bar bar1"></span> <span class="icon-bar bar2"></span>
+                            <span class="icon-bar bar3"></span>
+                        </button>
+                        <a class="navbar-brand" href="#userpage"> Ações </a>
+                    </div>
+                    <div class="collapse navbar-collapse">					
+                    </div>
+                </div>
+            </nav>        
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-7">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Lista de Ações</h4>
+                                </div>
+                                <div class="card-content">
+                                    <h:form id="form">
+                                        <div class="card-header">
+                                            <h:button outcome="acaoForm" value="Nova Ação"
+                                                      styleClass="btn btn-info btn-fill btn-wd" />
+                                            <p:commandButton value="Nova Ação"
+                                                      />
+                                        </div>
+                                        <p:growl id="msgs" showDetail="true" />
+                                        <div class="row">
+
+                                        </div>
+                                        <div class="row">
+                                            &nbsp;
+                                        </div>
+                                        <div class="row">   
+
+                                        </div>
+                                    </h:form>  
+
+                                    <!-- datatable -->
+                                    <table id="minhaTabela" class="table responsive table-striped table-bordered" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Cód.</th>
+                                                <th>Nome</th>
+                                                <th>Descrição</th>
+                                                <th>Início</th>
+                                                <th>Encerramento</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <ui:repeat var="item" value="#{acaoBean.entidadeList}" varStatus="status">
+                                                <tr>
+                                                    <td>#{item.id}</td>
+                                                    <td>#{item.nome}</td>
+                                                    <td>#{item.descricao}</td>
+                                                    <td><h:outputText value="#{item.inicio}"><f:convertDateTime pattern="dd/MM/yyyy"/></h:outputText></td>
+                                                    <td><h:outputText value="#{item.fim}"><f:convertDateTime pattern="dd/MM/yyyy"/></h:outputText></td>
+                                                    <td>
+                                                        <a href="" class="btn btn-info btn-fill btn-wd">Deletar</a>&nbsp;
+                                                        <h:form>
+                                                            <ui:remove>
+<!--                                                            <h:commandButton styleClass="btn btn-info btn-fill btn-wd" icon="ui-icon-pencil" title="Editar" value="Editar" action="#{campanhaBean.goToEditar}" ajax="false" >
+                                                                <f:setPropertyActionListener value="#{item}" target="#{campanhaBean.campanhaSelecionada}" />
+                                                            </h:commandButton>-->
+                                                            </ui:remove>
+                                                            <h:commandButton id="linkEdit" immediate="true" styleClass="btn btn-info btn-fill btn-wd"
+                                                                             alt="Editar Registro" title="Editar Registro" value="Editar"
+                                                                             icon="ui-icon-pencil" action="#{acaoBean.goToEditar}">
+                                                                <f:setPropertyActionListener value="#{item}" target="#{acaoBean.entidade}" />
+                                                            </h:commandButton>
+                                                        </h:form>&nbsp;
+                                                    </td>
+                                                </tr>								      
+                                            </ui:repeat> 
+                                        </tbody>
+                                    </table>  									  								  									  							                                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <nav class="pull-left">
+                        <ul>
+                            <li>
+                                <a href="http://www.ufpa.br/" target="_blank">
+                                    UFPA - Universidade Federal do Pará
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank"> <!--  -->
+                                    PASR - Projeto de Arquitetura de Software para Reutilização
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="copyright pull-right">
+                        © <script>document.write(new Date().getFullYear())</script>, Projeto <a href="#">Donazione</a>
+                    </div>
+                </div>                        
+            </footer>
+            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
+                <div class="ps-scrollbar-x" tabindex="0"
+                     style="left: 0px; width: 0px;"></div>
+            </div>
+            <div class="ps-scrollbar-y-rail"
+                 style="top: 0px; height: 804px; right: 3px;">
+                <div class="ps-scrollbar-y" tabindex="0"
+                     style="top: 0px; height: 615px;"></div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

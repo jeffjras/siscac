@@ -26,7 +26,7 @@ public class CampanhaDAO extends GenericDAO<Campanha> {
      * @param fim
      * @return Lista de campanhas
      */
-    public List<Campanha> obter(Date inicio, Date fim) {
+    public List<Campanha> obter(Date inicio, Date fim, boolean ativo) {
         EntityManager em = getEntityManager();
         String sql = "select c from Campanha c "
                 + "where "
@@ -39,7 +39,7 @@ public class CampanhaDAO extends GenericDAO<Campanha> {
             resposta = (List<Campanha>) query.
                     setParameter("inicio", inicio).
                     setParameter("fim", fim).
-                    setParameter("habilitada", Boolean.TRUE).
+                    setParameter("habilitada", ativo).
                     getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.err);

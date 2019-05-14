@@ -7,12 +7,16 @@ package br.org.centrocac.entidade;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -30,21 +34,21 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "colaborador")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Colaborador.findAll", query = "SELECT c FROM Colaborador c")
-    , @NamedQuery(name = "Colaborador.findById", query = "SELECT c FROM Colaborador c WHERE c.id = :id")
-    , @NamedQuery(name = "Colaborador.findByNome", query = "SELECT c FROM Colaborador c WHERE c.nome = :nome")
-    , @NamedQuery(name = "Colaborador.findByEmail", query = "SELECT c FROM Colaborador c WHERE c.email = :email")
-    , @NamedQuery(name = "Colaborador.findByCelular", query = "SELECT c FROM Colaborador c WHERE c.celular = :celular")
-    , @NamedQuery(name = "Colaborador.findByLogradouro", query = "SELECT c FROM Colaborador c WHERE c.logradouro = :logradouro")
-    , @NamedQuery(name = "Colaborador.findByNumero", query = "SELECT c FROM Colaborador c WHERE c.numero = :numero")
-    , @NamedQuery(name = "Colaborador.findByComplemento", query = "SELECT c FROM Colaborador c WHERE c.complemento = :complemento")
-    , @NamedQuery(name = "Colaborador.findByBairro", query = "SELECT c FROM Colaborador c WHERE c.bairro = :bairro")
-    , @NamedQuery(name = "Colaborador.findByCep", query = "SELECT c FROM Colaborador c WHERE c.cep = :cep")
-    , @NamedQuery(name = "Colaborador.findByCpfOuCnpj", query = "SELECT c FROM Colaborador c WHERE c.cpfOuCnpj = :cpfOuCnpj")
-    , @NamedQuery(name = "Colaborador.findBySenha", query = "SELECT c FROM Colaborador c WHERE c.senha = :senha")
-    , @NamedQuery(name = "Colaborador.findByPerfil", query = "SELECT c FROM Colaborador c WHERE c.perfil = :perfil")
-    , @NamedQuery(name = "Colaborador.findByProfissao", query = "SELECT c FROM Colaborador c WHERE c.profissao = :profissao")
-    , @NamedQuery(name = "Colaborador.findByComoColaborar", query = "SELECT c FROM Colaborador c WHERE c.comoColaborar = :comoColaborar")})
+    @NamedQuery(name = "Colaborador.findAll", query = "SELECT c FROM Colaborador c"),
+    @NamedQuery(name = "Colaborador.findById", query = "SELECT c FROM Colaborador c WHERE c.id = :id"),
+    @NamedQuery(name = "Colaborador.findByNome", query = "SELECT c FROM Colaborador c WHERE c.nome = :nome"),
+    @NamedQuery(name = "Colaborador.findByEmail", query = "SELECT c FROM Colaborador c WHERE c.email = :email"),
+    @NamedQuery(name = "Colaborador.findByCelular", query = "SELECT c FROM Colaborador c WHERE c.celular = :celular"),
+    @NamedQuery(name = "Colaborador.findByLogradouro", query = "SELECT c FROM Colaborador c WHERE c.logradouro = :logradouro"),
+    @NamedQuery(name = "Colaborador.findByNumero", query = "SELECT c FROM Colaborador c WHERE c.numero = :numero"),
+    @NamedQuery(name = "Colaborador.findByComplemento", query = "SELECT c FROM Colaborador c WHERE c.complemento = :complemento"),
+    @NamedQuery(name = "Colaborador.findByBairro", query = "SELECT c FROM Colaborador c WHERE c.bairro = :bairro"),
+    @NamedQuery(name = "Colaborador.findByCep", query = "SELECT c FROM Colaborador c WHERE c.cep = :cep"),
+    @NamedQuery(name = "Colaborador.findByCpfOuCnpj", query = "SELECT c FROM Colaborador c WHERE c.cpfOuCnpj = :cpfOuCnpj"),
+    @NamedQuery(name = "Colaborador.findBySenha", query = "SELECT c FROM Colaborador c WHERE c.senha = :senha"),
+    @NamedQuery(name = "Colaborador.findByPerfil", query = "SELECT c FROM Colaborador c WHERE c.perfil = :perfil"),
+    @NamedQuery(name = "Colaborador.findByProfissao", query = "SELECT c FROM Colaborador c WHERE c.profissao = :profissao"),
+    @NamedQuery(name = "Colaborador.findByComoColaborar", query = "SELECT c FROM Colaborador c WHERE c.comoColaborar = :comoColaborar")})
     //, @NamedQuery(name = "Colaborador.findByConfirmacao", query = "SELECT c FROM Colaborador c WHERE c.confirmacao = :confirmacao")})
 public class Colaborador implements Serializable {
 
@@ -106,10 +110,18 @@ public class Colaborador implements Serializable {
     @Column(name = "comoColaborar")
     private String comoColaborar;
     /*@Size(max = 10)
-    @Column(name = "confirmacao")
-    private String confirmacao;*/
+     @Column(name = "confirmacao")
+     private String confirmacao;*/
     @OneToMany(mappedBy = "colaborador")
     private List<Doacao> doacaoList;
+
+    @ManyToMany
+    @JoinTable(name = "colaborador_acao", joinColumns
+            = {
+                @JoinColumn(name = "colaborador_id")}, inverseJoinColumns
+            = {
+                @JoinColumn(name = "acao_id")})
+    private List<Acao> acaoList;
 
     public Colaborador() {
     }
@@ -241,13 +253,12 @@ public class Colaborador implements Serializable {
     }
 
     /*public String getConfirmacao() {
-        return confirmacao;
-    }
+     return confirmacao;
+     }
 
-    public void setConfirmacao(String confirmacao) {
-        this.confirmacao = confirmacao;
-    }*/
-
+     public void setConfirmacao(String confirmacao) {
+     this.confirmacao = confirmacao;
+     }*/
     @XmlTransient
     public List<Doacao> getDoacaoList() {
         return doacaoList;
@@ -257,29 +268,92 @@ public class Colaborador implements Serializable {
         this.doacaoList = doacaoList;
     }
 
+    public List<Acao> getAcaoList() {
+        return acaoList;
+    }
+
+    public void setAcaoList(List<Acao> acaoList) {
+        this.acaoList = acaoList;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.id);
+        hash = 67 * hash + Objects.hashCode(this.nome);
+        hash = 67 * hash + Objects.hashCode(this.email);
+        hash = 67 * hash + Objects.hashCode(this.celular);
+        hash = 67 * hash + Objects.hashCode(this.logradouro);
+        hash = 67 * hash + Objects.hashCode(this.numero);
+        hash = 67 * hash + Objects.hashCode(this.complemento);
+        hash = 67 * hash + Objects.hashCode(this.bairro);
+        hash = 67 * hash + Objects.hashCode(this.cep);
+        hash = 67 * hash + Objects.hashCode(this.cpfOuCnpj);
+        hash = 67 * hash + Objects.hashCode(this.senha);
+        hash = 67 * hash + Objects.hashCode(this.perfil);
+        hash = 67 * hash + Objects.hashCode(this.profissao);
+        hash = 67 * hash + Objects.hashCode(this.comoColaborar);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Colaborador)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        Colaborador other = (Colaborador) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Colaborador other = (Colaborador) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.celular, other.celular)) {
+            return false;
+        }
+        if (!Objects.equals(this.logradouro, other.logradouro)) {
+            return false;
+        }
+        if (!Objects.equals(this.numero, other.numero)) {
+            return false;
+        }
+        if (!Objects.equals(this.complemento, other.complemento)) {
+            return false;
+        }
+        if (!Objects.equals(this.bairro, other.bairro)) {
+            return false;
+        }
+        if (!Objects.equals(this.cep, other.cep)) {
+            return false;
+        }
+        if (!Objects.equals(this.cpfOuCnpj, other.cpfOuCnpj)) {
+            return false;
+        }
+        if (!Objects.equals(this.senha, other.senha)) {
+            return false;
+        }
+        if (!Objects.equals(this.perfil, other.perfil)) {
+            return false;
+        }
+        if (!Objects.equals(this.profissao, other.profissao)) {
+            return false;
+        }
+        if (!Objects.equals(this.comoColaborar, other.comoColaborar)) {
             return false;
         }
         return true;
     }
 
+    
     @Override
     public String toString() {
-        return "br.org.centrocac.entidade.Colaborador[ id=" + id + " ]";
+        return "Colaborador{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", celular=" + celular + ", logradouro=" + logradouro + ", numero=" + numero + ", complemento=" + complemento + ", bairro=" + bairro + ", cep=" + cep + ", cpfOuCnpj=" + cpfOuCnpj + ", senha=" + senha + ", perfil=" + perfil + ", profissao=" + profissao + ", comoColaborar=" + comoColaborar + ", doacaoList=" + doacaoList + ", acaoList=" + acaoList + '}';
     }
-    
+
 }

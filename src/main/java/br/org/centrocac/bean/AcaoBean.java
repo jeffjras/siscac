@@ -30,7 +30,8 @@ public class AcaoBean {
 
     @PostConstruct
     private void posInit() {
-        outcome = "acao-gerenciamento.xhtml?faces-redirect=true";
+        // outcome = "acaoForm.xhtml?faces-redirect=true";
+        outcome = "acaoFormBackup.xhtml?faces-redirect=true";
         entidadeList = ACAO_RN.obterTodos();
     }
 

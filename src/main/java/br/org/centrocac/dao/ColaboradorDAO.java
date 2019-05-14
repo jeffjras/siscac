@@ -5,10 +5,12 @@
  */
 package br.org.centrocac.dao;
 
+import br.org.centrocac.entidade.Acao;
 import br.org.centrocac.entidade.Colaborador;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -45,7 +47,7 @@ public class ColaboradorDAO extends GenericDAO<Colaborador> {
         String sql = "Select c from Colaborador c "
                 + "where c.email = :email "
                 + "and c.senha = :senha ";
-                //+ "and c.confirmacao is null";
+        //+ "and c.confirmacao is null";
         Query query = em.createQuery(sql);
 
         boolean resposta = Boolean.FALSE;
@@ -68,4 +70,36 @@ public class ColaboradorDAO extends GenericDAO<Colaborador> {
         return resposta;
     }
 
+    public List<Colaborador> obterTodosVoluntarios() {
+        EntityManager em = getEntityManager();
+        String sql = "SELECT * FROM colaborador c INNER JOIN colaborador_acao ca on ca.colaborador_id = c.id";
+        Query query = em.createNativeQuery(sql, Colaborador.class);
+        List<Colaborador> resposta = null;
+
+        try {
+            resposta = (List<Colaborador>) query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        } finally {
+            em.close();
+        }
+        return resposta;
+    }
+
+    public List<Colaborador> obterTodosVoluntariosPorAcao(Acao acao) {
+        EntityManager em = getEntityManager();
+        String sql = "SELECT * FROM colaborador c INNER JOIN colaborador_acao ca on ca.colaborador_id = c.id where ca.acao_id = ?";
+        Query query = em.createNativeQuery(sql, Colaborador.class);
+        query.setParameter(1, acao.getId());
+        List<Colaborador> resposta = null;
+
+        try {
+            resposta = (List<Colaborador>) query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        } finally {
+            em.close();
+        }
+        return resposta;
+    }
 }

@@ -7,6 +7,8 @@ package br.org.centrocac.rn;
 
 import br.org.centrocac.dao.AcaoDAO;
 import br.org.centrocac.entidade.Acao;
+import br.org.centrocac.entidade.Colaborador;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,4 +46,18 @@ public class AcaoRN {
         return ACAO_DAO.obter(Acao.class, id);
     }
 
+    public List<Acao> buscarTodosAcaoPorVoluntario(Colaborador voluntario){
+        
+        System.out.println(voluntario);
+         List<Acao> resposta = new ArrayList<>();
+        if (voluntario == null) {
+            System.out.println("vol null");
+            resposta = ACAO_DAO.obterTodosAcoes();
+        } else {
+            System.out.println("vol not null");
+            resposta = ACAO_DAO.obterTodosAcoesPorVoluntario(voluntario);
+        }
+        return resposta;
+        
+    }
 }
