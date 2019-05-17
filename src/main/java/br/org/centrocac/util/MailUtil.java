@@ -5,6 +5,7 @@
  */
 package br.org.centrocac.util;
 
+import br.org.centrocac.entidade.Colaborador;
 import java.util.Properties;
 import javax.mail.Address;
 import javax.mail.Message;
@@ -22,7 +23,6 @@ import javax.mail.internet.MimeMessage;
 public class MailUtil {
 
     // GMAIL TOSHIAKI TEST
-
     private final String EMAIL_REMETENTE_PASSWORD = "toshiaki123";
     private final String EMAIL_FROM = "lucastsutsumihobby@gmail.com";
 
@@ -51,8 +51,7 @@ public class MailUtil {
         return session;
     }
 
-    public boolean sendEmailToWithoutAttachment(String to) {
-
+    private boolean sendEmail(String to) {
         Session session = getSession();
 
         /**
@@ -79,6 +78,52 @@ public class MailUtil {
             System.out.println("Feito!!!");
             return true;
         } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private boolean sendEmail(String to, String assunto, String corpo) {
+        Session session = getSession();
+        to ="lucastsutsumi@gmail.com";
+        System.out.println("Email do destinatario" + to);
+        System.out.println("");
+        /**
+         * Ativa Debug para sessão
+         */
+        session.setDebug(true);
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(EMAIL_FROM)); //Remetente
+
+            Address[] toUser = InternetAddress //Destinatário(s)
+                    .parse(to);
+
+            message.setRecipients(Message.RecipientType.TO, toUser);
+            message.setSubject(assunto);//Assunto
+            message.setText(corpo);
+            /**
+             * Método para enviar a mensagem criada
+             */
+            Transport.send(message);
+
+            System.out.println("Feito!!!");
+            return true;
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean sendEmailTemplateResetPassword(Colaborador c, String novaSenha) {
+        try {
+            String assunto = "Redefinição de senha";
+
+            String corpo = "Olá, tudo bem? \n"
+                    + "sua senha foi alterada com sucesso, caso queria entra no sistema sua nova senha é " + novaSenha + "\n" 
+                    + "Obrigado pela sua ajuda!! Contamos com você";
+            return sendEmail(c.getEmail(), assunto, corpo);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

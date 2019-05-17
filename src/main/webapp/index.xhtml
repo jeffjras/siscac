@@ -5,92 +5,96 @@
 
 
     <h:head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    
-    <title>Centro Alternativo de Cultura</title>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <!-- Bootstrap -->
-    <link href="public/assets/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="public/assets/css/style.css" rel="stylesheet"/>    
-  </h:head>
-  <h:body>
-    
-    <div class="container">
-        
-        <div class="row">
-            <div class="col-sm-6">
-                <img src="public/assets/img/cac_criancas.jpg" alt="Centro Alternativo de Cultura" class="img-responsive logo" />
+        <title>Centro Alternativo de Cultura</title>
+
+        <!-- Bootstrap -->
+        <link href="public/assets/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="public/assets/css/style.css" rel="stylesheet"/>    
+    </h:head>
+    <h:body>
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <img src="public/assets/img/cac_criancas.jpg" alt="Centro Alternativo de Cultura" class="img-responsive logo" />
+                </div>
+                <div class="col-sm-6 text-center">
+                    <div class="container-sec">
+                        <div class="cabecalho-login">
+                            <h1>Projeto Donazione</h1>
+
+                            <p>Cadastre-se e começe já a realizar sua Donazione.</p>
+                        </div>
+
+                        <div class="col-xs-5">
+                            <hr />    
+                        </div>
+
+                        <div class="col-xs-2">
+                            <span class="glyphicon glyphicon-chevron-down"></span>    
+                        </div>
+
+                        <div class="col-xs-5">
+                            <hr />    
+                        </div>
+
+
+                        <div class="main-login">
+                            <form class="form-horizontal"  id="formLogin"
+                                  action="#{request.contextPath}/j_spring_security_check"
+                                  method="post">
+                                <h:outputText value="E-mail ou senha inválidos"
+                                              rendered="#{loginBean.erroAoAutenticar(param)}"
+                                              style="color: red; font-size: 1.2em; "/>
+                                <h:outputText value="Seus dados de Acesso foram excluídos"
+                                              rendered="#{loginBean.avisoAoExcluir(param)}"
+                                              style="color: red; font-size: 1.2em; "/>  
+                                <div class="form-group">                               
+                                    <p:inputText id="j_username" required="true" placeholder="E-mail" class="form-control border-input"/>                
+                                </div>                            
+                                <div class="form-group">                                
+                                    <p:password id="j_password" placeholder="Senha" class="form-control border-input"/>
+                                </div>                                                       
+                                <div class="form-group rodape-form">                                
+                                    <p:commandButton class="btn btn-primary btn-block" onclick="#{request.contextPath} / j_spring_security_check" value="Entrar" styleClass="Fs14"/>                                    
+                                </div>
+                            </form>   
+                        </div>
+
+                        <div class="col-xs-5">
+                            <hr />    
+                        </div>
+
+                        <div class="col-xs-2">
+                            <span class="glyphicon glyphicon-chevron-up"></span>    
+                        </div>
+
+                        <div class="col-xs-5">
+                            <hr />    
+                        </div>
+
+                        <div class="rodape-login">
+                            Não tem uma Conta? <a href="#{request.contextPath}/novoCadastro.xhtml" class="btn btn-link">Cadastre-se!</a>
+                        </div>
+
+                        <div class="rodape-login">
+                            <a href="#{request.contextPath}/esqueciSenha.xhtml" class="btn btn-link">Esqueci senha!</a>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-6 text-center">
-               <div class="container-sec">
-                    <div class="cabecalho-login">
-                        <h1>Projeto Donazione</h1>
-                        
-                        <p>Cadastre-se e começe já a realizar sua Donazione.</p>
-                    </div>
-                    
-                    <div class="col-xs-5">
-                        <hr />    
-                    </div>
-                    
-                    <div class="col-xs-2">
-                        <span class="glyphicon glyphicon-chevron-down"></span>    
-                    </div>
-                    
-                    <div class="col-xs-5">
-                        <hr />    
-                    </div>
-                    
-                    
-                    <div class="main-login">
-                        <form class="form-horizontal"  id="formLogin"
-				            action="#{request.contextPath}/j_spring_security_check"
-				            method="post">
-				            <h:outputText value="E-mail ou senha inválidos"
-	                          rendered="#{loginBean.erroAoAutenticar(param)}"
-	                          style="color: red; font-size: 1.2em; "/>
-	                        <h:outputText value="Seus dados de Acesso foram excluídos"
-	                          rendered="#{loginBean.avisoAoExcluir(param)}"
-	                          style="color: red; font-size: 1.2em; "/>  
-                            <div class="form-group">                               
-                                <p:inputText id="j_username" required="true" placeholder="E-mail" class="form-control border-input"/>                
-                            </div>                            
-                            <div class="form-group">                                
-                                <p:password id="j_password" placeholder="Senha" class="form-control border-input"/>
-                            </div>                                                       
-                            <div class="form-group rodape-form">                                
-                                <p:commandButton class="btn btn-primary btn-block" onclick="#{request.contextPath} / j_spring_security_check" value="Entrar" styleClass="Fs14"/>                                    
-                            </div>
-                        </form>   
-                    </div>
-                      
-                    <div class="col-xs-5">
-                        <hr />    
-                    </div>
-                    
-                    <div class="col-xs-2">
-                        <span class="glyphicon glyphicon-chevron-up"></span>    
-                    </div>
-                    
-                    <div class="col-xs-5">
-                        <hr />    
-                    </div>
-                      
-                    <div class="rodape-login">
-                        Não tem uma Conta? <a href="#{request.contextPath}/novoCadastro.xhtml" class="btn btn-link">Cadastre-se!</a>
-                    </div>
-                       
-               </div>
-            </div>
+
         </div>
-        
-    </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="public/assets/js/bootstrap.min.js"></script>
-  </h:body>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="public/assets/js/bootstrap.min.js"></script>
+    </h:body>
 </html>

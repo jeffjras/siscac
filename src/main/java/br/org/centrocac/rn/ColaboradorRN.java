@@ -9,6 +9,7 @@ import br.org.centrocac.dao.ColaboradorDAO;
 import br.org.centrocac.entidade.Acao;
 import br.org.centrocac.entidade.Colaborador;
 import br.org.centrocac.util.DonazioneUtil;
+import br.org.centrocac.util.MailUtil;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -78,5 +79,21 @@ public class ColaboradorRN {
             resposta = COLABORADOR_DAO.obterTodosVoluntariosPorAcao(acao);
         }
         return resposta;
+    }
+
+    public boolean redefinirSenha(Colaborador c) {
+        try {
+            String novaSenha = DonazioneUtil.gerarSenhaAscii(4);
+            System.out.println("Colaborador rn Nova senha : " + novaSenha);
+            c.setSenha(novaSenha);
+            System.out.println("Colaborador estado 1: " + c);
+            salvar(c);
+            MailUtil sender = new MailUtil();
+            System.out.println("Colaborador estado 2: " + c);
+            sender.sendEmailTemplateResetPassword(c, novaSenha);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

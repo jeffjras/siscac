@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <title>Centro Alternativo de Cultura</title>
+
+        <!-- Bootstrap -->
+        <link href="public/assets/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="public/assets/css/style.css" rel="stylesheet"/>  
+    </h:head>
+    <h:body>
+        <div class="container">
+            <h:form id="form">
+                <p:growl showDetail="true" showSummary="true" />
+
+                <div class="col-12">
+                    <div class="col-12 col-md-6 col-md-offset-3">
+                        <p:panel rendered="#{empty esqueciSenhaBean.usuario}">
+                            <f:facet name="header">
+                                Encontre sua conta
+                            </f:facet>
+                            <div class="container">
+                                <div class="row">
+                                    <p:outputLabel value="Insira seu email para procurar sua conta"/>
+                                </div>
+                                <div class="row">
+                                    <p:inputText styleClass="col-12" class="col-12" value="#{esqueciSenhaBean.userEmail}" placeholder="email@email.com"/>
+                                </div>
+                                <div class="row">
+                                    <p:commandButton value="Pesquisar" 
+                                                     actionListener="#{esqueciSenhaBean.pesquisarUsuarioPorEmail()}" 
+                                                     update="form"/>
+                                    <p:commandButton value="cancelar" 
+                                                     action="#{esqueciSenhaBean.cancelar()}" 
+                                                     />
+                                </div>
+                            </div>
+                        </p:panel>
+
+                        <!-- Usuario Encontrado -->
+
+                        <p:panel rendered="#{!empty esqueciSenhaBean.usuario}">
+                            <f:facet name="header">
+                                Redefina sua senha
+                            </f:facet>
+
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="" />
+                                <p:outputLabel value="Usuário encontrado" />
+
+                                <p:outputLabel for="nome" value="Nome" />
+                                <p:inputText id="nome" value="#{esqueciSenhaBean.usuario.nome}" disabled="true"/>
+
+                                <p:outputLabel for="email" value="Email" />
+                                <p:inputText id="email" value="#{esqueciSenhaBean.usuario.email}" disabled="true"/>
+                            </p:panelGrid>
+
+                            <p:panelGrid columns="2">
+
+                                <p:commandButton value="redefinir senha" 
+                                                 action="#{esqueciSenhaBean.redefinirSenha()}"/>
+                                <p:commandButton value="Voltar" 
+                                                 actionListener="#{esqueciSenhaBean.voltar()}"
+                                                 update="form"/>
+                            </p:panelGrid>
+
+
+                        </p:panel>
+
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+
