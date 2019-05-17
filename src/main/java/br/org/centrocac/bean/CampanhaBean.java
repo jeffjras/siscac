@@ -57,8 +57,7 @@ public class CampanhaBean implements Serializable {
 
     public void salvar() throws IOException {
         if (campanha.getId() == null) {
-            
-            campanha.setArrecadado(BigDecimal.valueOf(0.00));
+            //campanha.setArrecadado(BigDecimal.valueOf(0.00));
             campanha.setCadastro(dataHoje);
             if (campanha.getDataFim().before(dataHoje)) {
                 System.out.println("condição de data fim anterior a data de criação......");
@@ -74,6 +73,7 @@ public class CampanhaBean implements Serializable {
             }
         } else {
             System.out.println("Atualizando campanha......" + campanha.getId().toString());
+            campanha.setCadastro(dataHoje);
             campanhaDao.alterar(campanha);
             adicionarMensagem("Salvo!", "Campanha: " + campanha.getNome() + " atualizada.", FacesMessage.SEVERITY_INFO);
             campanha = new Campanha();
@@ -90,8 +90,7 @@ public class CampanhaBean implements Serializable {
             campanhas = campanhaDao.obterTodos(Campanha.class);
             return campanhas;
         }
-    }    
-    
+    }
 
     public void limpar() {
         campanha = new Campanha();

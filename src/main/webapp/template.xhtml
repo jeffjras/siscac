@@ -4,57 +4,16 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-    <!--    class="perfect-scrollbar-on"-->
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <!-- link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png" / -->
-        <!--  link rel="icon" type="image/png" sizes="96x96" href="img/logo2.png" / -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <ui:remove>
 
-        <!-- >h:outputStylesheet library="css" name="default.css"/ -->
-        <!--  h:outputStylesheet library="css" name="cssLayout.css"/ -->
-
-        <h:outputStylesheet library="css" name="bootstrap.min.css" />
-
-        <!-- datatable -->
-        <h:outputStylesheet library="css" name="jquery.dataTables.min.css" />
-
-
-        <!--  CSS for Demo Purpose, don't include it in your project     -->
-        <h:outputStylesheet library="css" name="demo.css" />
-
-        <!-- Font Awesome core CSS     -->	
-        <h:outputStylesheet library="css" name="font-awesome.min.css" />
-
-        <!--  Paper Dashboard core CSS    -->
-        <h:outputStylesheet library="css" name="paper-dashboard.css" />
-
-        <h:outputStylesheet library="css" name="estilos.css" />
-
-        <h:outputStylesheet library="css" name="mapa.css" />
-
-        <!--  Fonts and icons     -->
-        <h:outputStylesheet library="css" name="font-awesome.min.css" />
-
-        <h:outputStylesheet library="css" name="themify-icons.css" />    
-
-        <h:outputStylesheet url="https://fonts.googleapis.com/css?family=Muli:400,300" />
-
-        <h:outputStylesheet library="css" name="style.css" />
-
-        <h:outputScript library="js" name="valida.js" />
-
-
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        
-        <h:outputScript library="js" name="html5shiv.min.js" />
-        <h:outputScript library="js" name="respond.min.js" />
-                
-        <![endif]-->
+        </ui:remove>
+        <h:outputStylesheet name="./css/default.css" />
+        <h:outputStylesheet name="./css/cssLayout.css" />
+        <h:outputStylesheet name="grid/grid.css" library="primefaces" />
+        <h:outputStylesheet name="./css/bootstrap.min.css" />
 
         <title>
             <ui:insert name="title">
@@ -64,349 +23,133 @@
     </h:head>
 
     <h:body>
-        <!--div class="wrapper" -->
-        <!-- div id="top" class="top" align="right">
-                <ui:insert name="top">
-                    Olá #{usuarioBean.usuarioLogado.nome}! <p:link href="#{request.contextPath}/j_spring_security_logout" value="Sair"/>
-                    <br/>
-        #{usuarioBean.perfilDoUsuarioLogado}
-    </ui:insert>
-</div -->
-
-        <!--div id="main" class="main" -->
-
-        <div id="sidebar">
-            <ui:insert name="sidebar">
-
-                <div class="sidebar" data-background-color="brown" data-active-color="danger">            
-                    <div class="logo">
-                        <center><a href="#{request.contextPath}/usuario/main.xhtml"><h:graphicImage library="images" name="logo_cac.png" alt="Logo" styleClass="img-responsive" > </h:graphicImage></a></center>
-                        <!--a href="#" class="simple-text logo-normal"> </a -->		
-                    </div>            
-                    <div class="sidebar-wrapper ps-container ps-theme-default ps-active-x ps-active-y" data-ps-id="7d513cba-fbdf-6afb-e530-a783eb65f856">	                
-                        <div class="user">
-                            <div class="photo">
-                                <h:graphicImage  library="images" name="faces/face-2.jpg" />
-                            </div>
-                            <div class="info">
-                                <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                                    <span><small>
-                                            #{loginBean.contaLogada.email}</small>		                                   												
-                                        <b class="caret"></b>
-                                    </span>                            
-                                </a>                        
-                                <div class="clearfix">
-                                    <br/>
-
-                                </div>
-
-                                <div class="collapse" id="collapseExample">
-                                    <ul class="nav">
-                                        <li>         
-                                            <a href="#">
-                                                <center>                      
-                                                    <span class="sidebar-mini"><small>Nome</small></span>
-                                                    <span><small>#{loginBean.contaLogada.nome}</small></span>
-                                                </center>
-                                            </a>                          		
-                                        </li>
-                                        <li>    
-                                            <a href="#">
-                                                <center>                      
-                                                    <span class="sidebar-mini"><small>Perfil</small></span>
-                                                    <span><small>#{loginBean.perfilDoUsuarioLogado}</small></span>
-                                                </center>
-                                            </a>                                                               	
-                                        </li>
-                                        <li>                            	
-                                            <a href="#{request.contextPath}/usuario/colaboradorForm.xhtml">
-                                                <span class="sidebar-mini">&nbsp;</span>                                    
-                                                <span class="btn btn-info">Editar Conta</span>										
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#edit">
-                                                <span class="sidebar-mini">&nbsp;</span>
-                                                <span class="sidebar-normal">
-                                                    <h:form id="formDeleta" onsubmit="return deletaConfirma();" >										
-                                                        <h:inputHidden id="id" value="#{colaboradorBean.colaborador.id}" />                                            
-                                                        <!-- button class="btn btn-info" -->
-                                                        <h:commandButton styleClass="btn btn-info" action="#{colaboradorBean.excluir()}" value="Excluir Conta"></h:commandButton>	
-                                                        <!-- /button -->                                                
-                                                    </h:form>
-                                                    <ui:remove>
-                                                        <p:commandButton 
-                                                            value="Excluir"
-                                                            action="#{colaboradorBean.excluir()}"
-                                                            ajax="false">					                        
-                                                        </p:commandButton>
-                                                    </ui:remove>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <p:link href="#{request.contextPath}/j_spring_security_logout" value="Sair"/>                                                                                                                                    						                                                               
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> <!-- user -->
-                        <ul class="nav">
-                            <li>
-                                <a data-toggle="collapse" href="#dashboardOverview">
-                                    <i class="glyphicon glyphicon-user"></i>
-                                    <p>Campanhas
-                                        <b class="caret"></b>
-                                    </p>
-                                </a>
-                                <div class="collapse" id="dashboardOverview">
-                                    <ul class="nav">
-                                        <li>
-                                            <a href="../administrador/listarCampanha.xhtml">
-                                                <span class="sidebar-mini"><span class="fa fa-user-circle"></span></span>
-                                                <span class="sidebar-normal">Listar Campanhas</span>
-                                            </a>
-                                        </li>						
-                                        <li>
-                                            <a href="#">
-                                                <span class="sidebar-mini"><span class="fa fa-user-circle"></span></span>
-                                                <span class="sidebar-normal">Listar Doações</span>
-                                            </a>                                
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="sidebar-mini">&nbsp;</span>
-                                                <span class="sidebar-normal">Pesquisar Doador</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="sidebar-mini"><span class="fa fa-user-circle"></span></span>
-                                                <span class="sidebar-normal">Listar Voluntários</span>
-                                            </a>
-                                        </li>
-                                        <li>                                
-                                            <a href="#">
-                                                <span class="sidebar-mini"><span class="fa fa-user-circle"></span></span>
-                                                <span class="sidebar-normal">Emitir Recibo</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <a data-toggle="collapse" href="#grupos-ativos">
-                                    <i class="fa fa-users"></i>
-                                    <p>Ações
-                                        <b class="caret"></b>
-                                    </p>
-                                </a>
-                                <div class="collapse" id="grupos-ativos">
-                                    <ul class="nav">
-                                        <li>
-                                            <a href="../usuario/listarAcaoBackup.xhtml">
-                                                <span class="sidebar-mini"><span class="">&nbsp;</span></span>
-                                                <span class="sidebar-normal">Listar Ações</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="../usuario/listarVoluntarios.xhtml">
-                                                <span class="sidebar-mini"><span class="">&nbsp;</span></span>
-                                                <span class="sidebar-normal">Listar Voluntários</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="../usuario/pesquisarVoluntario.xhtml">
-                                                <span class="sidebar-mini"><i class="fa fa-folder"></i></span>
-                                                <span class="sidebar-normal">Pesquisar Voluntário</span>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="#">
-                                                <span class="sidebar-mini">&nbsp;</span>
-                                                <span class="sidebar-normal">Emitir Certificado</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <a data-toggle="collapse" href="#doc">
-                                    <i class="fa fa-folder"></i>
-                                    <p>Gerenciamento
-                                        <b class="caret"></b>
-                                    </p>
-                                </a>
-                                <div class="collapse" id="doc">
-                                    <ul class="nav">
-                                        <li>
-                                            <a href="#">
-                                                <span class="sidebar-mini"><i class="fa fa-folder-open"></i></span>
-                                                <span class="sidebar-normal">Listar Doações Realizadas</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="sidebar-mini"><i class="fa fa-folder"></i></span>
-                                                <span class="sidebar-normal">Emitir Recibo das Doações</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="sidebar-mini"><i class="fa fa-folder"></i></span>
-                                                <span class="sidebar-normal">Listar Ações Realizadas</span>
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </li>                   
-                        </ul> <!-- ul nav -->
-                        <hr />
-                        <ul class="nav">
-                            <li>
-                                <a data-toggle="collapse" href="#alt-tema">
-                                    <i class="fa fa-paint-brush"></i>
-                                    <p>Qualificações
-                                        <b class="caret"></b>
-                                    </p>
-                                </a>
-                                <div class="collapse" id="alt-tema">
-                                    <ul  class="nav">						
-                                        <li>
-                                            <a href="#">
-                                                <span class="sidebar-mini"><i class="fa fa-circle"></i></span>Positivas:
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="sidebar-mini"><i class="fa fa-circle"></i></span>Negativas:
-                                            </a>
-                                        </li>						
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-info-circle"></i>
-                                    <p>Central de ajuda</p>
-                                </a>
-                            </li>
-                        </ul>
-
-                        <div class="ps-scrollbar-x-rail" style="width: 260px; left: 0px; bottom: 3px;">
-                            <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 259px;"></div>
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <nav class="navbar navbar-default ui-g-nopad">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed"
+                                    data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                                    aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span> <span
+                                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                                    class="icon-bar"></span>
+                            </button>
+                            <a href="#{request.contextPath}/usuario/main.xhtml"><h:graphicImage
+                                    width="200px" library="images" name="logo_cac.png" alt="Logo"
+                                    styleClass="img-responsive">
+                                </h:graphicImage></a>			
                         </div>
-                        <div class="ps-scrollbar-y-rail" style="top: 0px; height: 729px; right: 3px;">
-                            <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 693px;"></div>
-                        </div>					
-                    </div> <!-- sidebar-wrapper -->
-                </div>	<!-- sidebar -->
-            </ui:insert>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse"
+                             id="bs-example-navbar-collapse-1">			
+                            <!-- form class="navbar-form navbar-left">
+                                    <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Pesquisar..."/>
+                                    </div>
+                                    <button type="submit" class="btn btn-default">Buscar</button>
+                            </form-->
+                            <ul class="nav navbar-nav navbar-right">			           
+                                <li><a href="#"></a></li>
+                                <li class="dropdown"><a href="#" class="dropdown-toggle"
+                                                        data-toggle="dropdown" role="button" aria-haspopup="true"
+                                                        aria-expanded="false"><h:graphicImage library="images" name="faces/face-2.jpg" style="border-radius: 50%; width: 30px; height: 30px; margin-right: 10px;"/> #{usuarioBean.usuarioLogado.nome}<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">						
+                                        <li><center>#{colaboradorBean.usuarioLogado.email}</center></li>
+                                        <li><center>#{colaboradorBean.perfilDoUsuarioLogado}</center></li>						
+                                        <li>
+                                            <h:form onsubmit="return deletaConfirma();">
+                                                <h:inputHidden id="id" value="#{colaboradorBean.colaborador.id}" />
+                                                <p:menu styleClass="ui-g-12 ui-md-12">							   								   	
+                                                    <p:menuitem value="Editar Conta"
+                                                                url="#{request.contextPath}/usuario/colaboradorForm.xhtml"								
+                                                                ajax="false" icon="pi pi-save"/>
+                                                    <p:menuitem value="Excluir Conta"
+                                                                action="#{colaboradorBean.excluir()}"								
+                                                                ajax="false" icon="pi pi-refresh"/>																																	   											
+                                                    <p:menuitem value="Sair"
+                                                                url="#{request.contextPath}/j_spring_security_logout"
+                                                                ajax="false" icon="pi pi-times"/>								
+                                                </p:menu>
+                                            </h:form>	
+                                        </li>																								
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </div>
+                    <!-- /.container-fluid --> 
+                </nav>
+            </div>
+
+            <div class="ui-g-2 ui-md-2">
+                <!--  Menu -->
+                <div class="ui-g-12">
+                    <h:form>
+                        <p:growl id="messages" showDetail="false" />
+                        <!-- toggleable="true" -->
+                        <p:menu  styleClass="ui-g-12 ui-md-12">
+                            <p:submenu label="Campanhas">
+                                <p:menuitem value="Listar Campanhas" url="#{request.contextPath}/administrador/listarCampanha.xhtml" icon="pi pi-star"/>
+                                <p:menuitem value="Pesquisar Doador(TODO)" url="#{request.contextPath}/administrador/listarCampanha.xhtml" icon="pi pi-star"/>
+                                <p:menuitem value="Listar Doações Realizadas(TODO)" url="#{request.contextPath}/administrador/listarCampanha.xhtml" icon="pi pi-star"/>
+                                <p:menuitem value="Emitir Recibo(TODO)" url="#{request.contextPath}/administrador/listarCampanha.xhtml" icon="pi pi-star"/>							
+                            </p:submenu>
+                            <p:submenu label="Ações">
+                                <p:menuitem value="Listar Ações" url="#{request.contextPath}/administrador/listarAcaoBackup.xhtml" icon="pi pi-star"/>
+                                <p:menuitem value="Listar Voluntários" url="#{request.contextPath}/administrador/listarVoluntariosPorAcaoBackup.xhtml" icon="pi pi-star"/>
+                                <p:menuitem value="Pesquisar Voluntário" url="#{request.contextPath}/administrador/listarAcaoPorVoluntarioBackup.xhtml" icon="pi pi-star"/>
+                                <p:menuitem value="Emitir Certificado(TODO)" url="#" icon="pi pi-star"/>
+                            </p:submenu>
+                            <ui:remove>
+                                <p:submenu label="Gerenciamento">
+                                    <p:menuitem value="Emitir Recibo das Doações" icon="pi pi-star" />
+                                    <p:menuitem value="Listar Ações Realizadas" icon="pi pi-star" />
+                                </p:submenu>
+                            </ui:remove>
+                            <p:submenu label="Central de Ajuda">
+                                <p:menuitem value="FAQ (TODO)"
+                                            action="#" icon="pi pi-home" />							
+                            </p:submenu>
+                        </p:menu>
+                    </h:form>
+                </div>
+            </div>
+
+            <div class="ui-g-10 ui-md-10 ui-g-nopad">
+                <div class="ui-g-12 ui-g-nopad">
+                    <div id="content">
+                        <ui:insert name="content">  
+                            Content
+                        </ui:insert>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-g-12 rodape">
+                <!-- footer -->
+                <div class="ui-g-12 layout-footer">
+                    <div class="ui-g-12 ui-md-6 footer-left">
+                        <span class="footer-info-left"><a href="#">UFPA</a> - Universidade Federal
+                            do Pará</span>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 footer-right">
+                        <span class="footer-info-right"><a href="#">PASR</a> - Projeto de
+                            Arquitetura de Software para Reutilização, Projeto <a href="#">Donazione</a> ©
+                            <script>document.write(new Date().getFullYear())</script>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <div id="content" class="center_content">
-            <ui:insert name="content">
-                Content
-            </ui:insert>
-        </div>
-        <!--/div -->
-        <!--/div -->
-        <!-- wrapper -->
-
-        <script>
-            $(document).ready(function () {
-                $('#minhaTabela').DataTable({
-                    "language": {
-                        "lengthMenu": "Mostrando _MENU_ registros por página",
-                        "zeroRecords": "Nada encontrado",
-                        "info": "Mostrando página _PAGE_ de _PAGES_",
-                        "infoEmpty": "Nenhum registro disponível",
-                        "infoFiltered": "(filtrado de _MAX_ registros no total)",
-                        "search": "Localizar:",
-                        "loadingRecords": "Carregando...",
-                        "paginate": {
-                            "first": "Primeiro",
-                            "last": "Último",
-                            "next": "Próximo",
-                            "previous": "Anterior"
-                        }
-                    }
-                });
-            });
-        </script>
-
-        <h:outputScript library="js" name="jquery.js"/>
-        <h:outputScript library="js" name="jquery.min.js" />
-
-
-        <h:outputScript library="js" name="jquery-3.1.1.js" />
-        <h:outputScript library="js" name="jquery-3.1.1.min.js" />
-
-        <!-- datatable -->
-        <h:outputScript library="js" name="jquery.dataTables.min.js" />
-
-
-        <h:outputScript library="js" name="jquery-ui.min.js" />
-
-        <h:outputScript library="js" name="perfect-scrollbar.min.js" />
-
+        <h:outputScript library="js" name="valida.js" />
+        <!--  h:outputScript library="js" name="jquery.js" /-->
         <h:outputScript library="js" name="bootstrap.min.js" />
-
-        <!--  Forms Validations Plugin -->
-        <h:outputScript library="js" name="jquery.validate.min.js" />
-
-        <!-- Promise Library for SweetAlert2 working on IE -->
-        <h:outputScript library="js" name="es6-promise-auto.min.js" />
-
-        <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
-        <h:outputScript library="js" name="moment.min.js" />
-
-        <!--  Date Time Picker Plugin is included in this js file -->
-        <h:outputScript library="js" name="bootstrap-datetimepicker.js" />
-
-        <!--  Select Picker Plugin -->
-        <h:outputScript library="js" name="bootstrap-selectpicker.js" />
-
-        <!--  Switch and Tags Input Plugins -->
-        <h:outputScript library="js" name="bootstrap-switch-tags.js" />
-
-        <!-- Circle Percentage-chart -->
-        <h:outputScript library="js" name="jquery.easypiechart.min.js" />
-
-        <!--  Charts Plugin -->
-        <h:outputScript library="js" name="chartist.min.js" />
-
-        <!--  Notifications Plugin    -->
-        <h:outputScript library="js" name="bootstrap-notify.js" />
-
-        <!-- Sweet Alert 2 plugin -->
-        <h:outputScript library="js" name="sweetalert2.js" />
-
-        <!-- Vector Map plugin -->
-        <h:outputScript library="js" name="jquery-jvectormap.js" />
-
-        <!-- Wizard Plugin    -->
-        <h:outputScript library="js" name="jquery.bootstrap.wizard.min.js" />
-
-        <!--  Bootstrap Table Plugin    -->
-        <h:outputScript library="js" name="bootstrap-table.js" />
-
-        <!--  Plugin for DataTables.net  -->
-        <h:outputScript library="js" name="jquery.datatables.js" />
-
-        <!--  Full Calendar Plugin    -->
-        <h:outputScript library="js" name="fullcalendar.min.js" />
-
-        <!-- Paper Dashboard PRO Core javascript and methods for Demo purpose -->
-        <h:outputScript library="js" name="paper-dashboard.js" />
-
-        <!--   Sharrre Library    -->
-        <h:outputScript library="js" name="jquery.sharrre.js" />
-
-        <!-- Paper Dashboard PRO DEMO methods, don't include it in your project! -->
-        <h:outputScript library="js" name="demo.js" />
-
-
     </h:body>
 
 </html>
