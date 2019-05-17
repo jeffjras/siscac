@@ -9,16 +9,13 @@ import br.org.centrocac.entidade.Acao;
 import br.org.centrocac.entidade.Colaborador;
 import br.org.centrocac.rn.AcaoRN;
 import br.org.centrocac.util.MailUtil;
+import br.org.centrocac.util.UtilBean;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-/**
- *
- * @author toshiaki
- */
 @ManagedBean
 @ViewScoped
 public class AcaoPorVoluntarioBean {
@@ -36,6 +33,7 @@ public class AcaoPorVoluntarioBean {
     @PostConstruct
     private void posInit() {
         filtrarPorColaborador();
+        outcome = "vincularAcaoAColaborador.xhtml?faces-redirect=true";
     }
 
     public void limparCampos() {
@@ -43,11 +41,14 @@ public class AcaoPorVoluntarioBean {
     }
 
     public String filtrarPorColaborador() {
-        System.out.println("Entrou");
         List<Acao> resposta = RN.buscarTodosAcaoPorVoluntario(entidade);
         setEntidadeList(resposta);
-        System.out.println(getEntidadeList());
         return null;
+    }
+
+    public String goToEditar() {
+        UtilBean.naSessao("id", entidade.getId());
+        return outcome;
     }
 
     public Colaborador getEntidade() {

@@ -12,13 +12,14 @@ import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
  * @author toshiaki
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class AcaoFormBean {
 
     //Entidade

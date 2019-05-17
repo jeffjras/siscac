@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      template="/templates/layout.xhtml">
-    
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/layout.xhtml">
+
     <ui:define name="content">
         <h:form id="formGerencia">
             <p:growl showDetail="true" showSummary="true" />
@@ -32,25 +32,31 @@
                     </p:column>
 
                     <p:column headerText="operações">
-                        <p:commandButton id="linkEdit" immediate="true"
+                        <p:commandButton id="linkEdit" icon="ui-icon-pencil" immediate="true"
                                          alt="Editar Registro" title="Editar Registro"
-                                         icon="ui-icon-pencil" 
                                          action="#{acaoBean.goToEditar}"
                                          actionListener="#{acaoBean.setEntidade(entidade)}">
                         </p:commandButton>
                         |
-                        <p:commandButton id="linkRemove" icon="ui-icon-trash"
-                                         immediate="true" alt="Remover Registro" title="Remover Registro"
+                        <p:commandButton id="linkRemove" icon="ui-icon-trash" immediate="true"
+                                         alt="Remover Registro" title="Remover Registro"
                                          action="#{acaoBean.excluir}" ajax="true"
                                          update=":formGerencia:panelGridDataTable">
                             <f:setPropertyActionListener value="#{entidade}"
                                                          target="#{acaoBean.entidade}" />
                         </p:commandButton>
+
+                        <p:commandButton id="linkVinculo" icon="ui-icon-group" immediate="true"
+                                         alt="Gerenciar colaboradores" title="Gerenciar colaboradores"
+                                         action="#{acaoBean.goToVincularColaborador()}"
+                                         actionListener="#{acaoBean.setEntidade(entidade)}">
+                        </p:commandButton>
+
                     </p:column>
                 </p:dataTable>
             </p:panelGrid>
         </h:form>
-        
+
     </ui:define>
 </ui:composition>
 

@@ -1,52 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c9f5acd-5151-47cb-9071-938664bdb306" name="Default Changelist" comment="tela de acao e colaborador">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/AcaoPorVoluntarioBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/CampanhaBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/VoluntarioPorAcaoBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/converter/AcaoConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/converter/ColaboradorConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/util/MailUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/administrador/campanha.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/administrador/listarCampanha.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/jquery.dataTables.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/themify.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/themify.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/sort_asc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/sort_asc_disabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/sort_both.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/sort_desc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/sort_desc_disabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery-3.1.1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery.dataTables.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/templates/layout.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/usuario/acaoForm.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/usuario/campanhaLista.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/usuario/listarAcao.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/usuario/listarAcaoPorVoluntarioBackup.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/usuario/listarVoluntarios.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/usuario/listarVoluntariosPorAcaoBackup.xhtml" afterDir="false" />
+    <list default="true" id="5c9f5acd-5151-47cb-9071-938664bdb306" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/AcaoBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/AcaoBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/AcaoFormBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/AcaoFormBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/conversor/FacesConverterLocalDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/converter/FacesConverterLocalDate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/dao/AcaoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/dao/AcaoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/dao/CampanhaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/dao/CampanhaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/dao/ColaboradorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/dao/ColaboradorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/Acao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/Acao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/Colaborador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/Colaborador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/rn/AcaoRN.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/rn/AcaoRN.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/rn/ColaboradorRN.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/rn/ColaboradorRN.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/public/assets/css/paper-dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/public/assets/css/paper-dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/paper-dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/paper-dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery-3.1.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery-3.1.1.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/template.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/template.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/usuario/acao-form.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usuario/acaoFormBackup.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/usuario/acao-gerenciamento.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usuario/listarAcaoBackup.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/usuario/doacao-gerenciamento.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usuario/doacaoGerenciamento.xhtml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -79,14 +35,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/org/centrocac/rn/DoacaoRN.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
+            <state relative-caret-position="165">
               <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="196" selection-start-line="196" selection-end-line="196" />
             </state>
           </provider>
         </entry>
@@ -97,7 +62,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="jefferson" />
       </map>
     </option>
   </component>
@@ -201,8 +166,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -259,11 +222,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documentos/workspace-sts-3.9.6.RELEASE/app-amazonia-360-web" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -295,13 +260,20 @@
       <option name="project" value="LOCAL" />
       <updated>1555954543403</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="acões funcionalidades">
+      <created>1557870423022</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1557870423022</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2659091" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27045456" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -330,7 +302,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="tela de acao e colaborador" />
-    <option name="LAST_COMMIT_MESSAGE" value="tela de acao e colaborador" />
+    <MESSAGE value="acões funcionalidades" />
+    <option name="LAST_COMMIT_MESSAGE" value="acões funcionalidades" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/ColaboradorBean.java">
@@ -349,11 +322,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/org/centrocac/rn/DoacaoRN.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
+        <state relative-caret-position="165">
           <caret line="17" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="196" selection-start-line="196" selection-end-line="196" />
         </state>
       </provider>
     </entry>

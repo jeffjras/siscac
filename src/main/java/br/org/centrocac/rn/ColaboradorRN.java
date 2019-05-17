@@ -51,6 +51,10 @@ public class ColaboradorRN {
         return COLABORADOR_DAO.obterTodos(Colaborador.class);
     }
 
+    public List<Colaborador> obterTodosColaboradoresDisponiveisParACAO(Integer id) {
+        return COLABORADOR_DAO.obterTodosVoluntariosDisponiveisParaAcao(id);
+    }
+
     public Colaborador obter(Integer id) {
         return COLABORADOR_DAO.obter(Colaborador.class, id);
     }

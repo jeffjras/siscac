@@ -47,17 +47,15 @@ public class AcaoRN {
     }
 
     public List<Acao> buscarTodosAcaoPorVoluntario(Colaborador voluntario){
-        
         System.out.println(voluntario);
-         List<Acao> resposta = new ArrayList<>();
+         List<Acao> resposta;
         if (voluntario == null) {
             System.out.println("vol null");
-            resposta = ACAO_DAO.obterTodosAcoes();
+            resposta = new ArrayList<>();
         } else {
             System.out.println("vol not null");
             resposta = ACAO_DAO.obterTodosAcoesPorVoluntario(voluntario);
         }
-        return resposta;
-        
+        return resposta;   
     }
 }

@@ -102,4 +102,21 @@ public class ColaboradorDAO extends GenericDAO<Colaborador> {
         }
         return resposta;
     }
+    
+    public List<Colaborador> obterTodosVoluntariosDisponiveisParaAcao(Integer id) {
+        EntityManager em = getEntityManager();
+        String sql = "SELECT distinct * FROM colaborador c where c.id not in (SELECT distinct c.id FROM colaborador c INNER JOIN colaborador_acao ca on ca.colaborador_id = c.id where ca.acao_id = ?)";
+        Query query = em.createNativeQuery(sql, Colaborador.class);
+        query.setParameter(1, id);
+        List<Colaborador> resposta = null;
+
+        try {
+            resposta = (List<Colaborador>) query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        } finally {
+            em.close();
+        }
+        return resposta;
+    }
 }

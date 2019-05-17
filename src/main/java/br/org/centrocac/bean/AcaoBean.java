@@ -13,9 +13,10 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class AcaoBean {
     
     //Entidade
@@ -30,7 +31,6 @@ public class AcaoBean {
 
     @PostConstruct
     private void posInit() {
-        // outcome = "acaoForm.xhtml?faces-redirect=true";
         outcome = "acaoFormBackup.xhtml?faces-redirect=true";
         entidadeList = ACAO_RN.obterTodos();
     }
@@ -50,6 +50,12 @@ public class AcaoBean {
         return outcome;
     }
 
+    public String goToVincularColaborador() {
+        outcome = "vincularColaboradorAAcao.xhtml?faces-redirect=true";
+        UtilBean.naSessao("id", entidade.getId());
+        return outcome;
+    }
+    
     public void limparCampos() {
         this.entidade = new Acao();
     }
