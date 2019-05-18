@@ -15,52 +15,48 @@ import javax.faces.context.FacesContext;
 //import br.org.centocac.util.exception.ErroSistema;
 import br.org.centrocac.dao.CampanhaDAO;
 import br.org.centrocac.entidade.Campanha;
-import br.org.centrocac.rn.CampanhaRN;
+import br.org.centrocac.util.UtilBean;
 import java.io.IOException;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean
-@ViewScoped
-public class CampanhaBean implements Serializable {
+@SessionScoped
+public class CampanhaBeanOld implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private Campanha campanha = new Campanha();
     transient private CampanhaDAO campanhaDao = new CampanhaDAO();
+    private List<Campanha> campanhas = new ArrayList<>();
     private Date dataHoje = new Date();
     private Campanha campanhaSelecionada = new Campanha();
-    private CampanhaRN campanhaRN = new CampanhaRN();
+    private Date dataInicio = null, dataFim = null;
+    private Boolean ativo = true;
 
-    private String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+    private Object id;
 
     @PostConstruct
     public void posInit() {
-        this.imprimeId();
 
+        campanhas = campanhaDao.obterTodos(Campanha.class);
         System.out.println("init campanha bean!!");
+        //System.out.println(UtilBean.daSessao("id").toString());
+        id = UtilBean.daSessao("id");
         if (id != null) {
-
-            if (id.isEmpty() == false) {
-                System.out.println(Integer.valueOf(id).toString());
-                this.findOneC(Integer.valueOf(id));
-            }
+            System.out.println("Id" + id.toString());
+            findOne((Integer) id);
         }
-
     }
 
-    public void findOneC(Integer id) {
-        System.out.println("carregar uma entidade. id: " + id.toString());
-        campanha = campanhaRN.obter(id);
-        campanhaSelecionada = campanhaRN.obter(id);
-        System.out.println("Id campanha: " + campanha.getId().toString());
-        this.imprime();
+    public void findOne(Integer id) {
+        campanha = campanhaDao.obter(Campanha.class, id);
     }
 
-    public CampanhaBean() {
+    public CampanhaBeanOld() {
 
     }
 
     public void salvar() throws IOException {
         if (campanha.getId() == null) {
-
             campanha.setArrecadado(BigDecimal.valueOf(0.00));
             campanha.setCadastro(dataHoje);
             if (campanha.getDataFim().before(dataHoje)) {
@@ -70,17 +66,15 @@ public class CampanhaBean implements Serializable {
                         FacesMessage.SEVERITY_WARN);
             } else {
                 System.out.println("Salvando nova campanha......");
-
-                campanhaRN.salvar(campanha);
+                campanhaDao.criar(campanha);
                 adicionarMensagem("Salvo!", "Campanha: " + campanha.getNome() + " criada.", FacesMessage.SEVERITY_INFO);
                 campanha = new Campanha();
                 FacesContext.getCurrentInstance().getExternalContext().redirect("../administrador/listarCampanha.xhtml");
             }
         } else {
             System.out.println("Atualizando campanha......" + campanha.getId().toString());
-            this.imprime();
-            campanha.setCadastro(campanhaSelecionada.getCadastro());
-            campanhaRN.salvar(campanha);
+            campanha.setCadastro(dataHoje);
+            campanhaDao.alterar(campanha);
             adicionarMensagem("Salvo!", "Campanha: " + campanha.getNome() + " atualizada.", FacesMessage.SEVERITY_INFO);
             campanha = new Campanha();
             FacesContext.getCurrentInstance().getExternalContext().redirect("../administrador/listarCampanha.xhtml");
@@ -89,6 +83,16 @@ public class CampanhaBean implements Serializable {
 
     public String cancelar() {
         return "/administrador/listarCampanha?faces-redirect=true";
+    }
+    public List<Campanha> listarTodos() {
+        if (dataInicio != null && dataFim != null) {
+            campanhas = campanhaDao.obter(dataInicio, dataFim, ativo);
+            return campanhas;
+
+        } else {
+            campanhas = campanhaDao.obterTodos(Campanha.class);
+            return campanhas;
+        }
     }
 
     public void limpar() {
@@ -101,12 +105,18 @@ public class CampanhaBean implements Serializable {
         context.addMessage(null, message);
     }
 
+    public String goToEditar() {
+        campanha = campanhaSelecionada;
+        System.out.println("CampanhaBean/editar/" + campanha.getId() + " / " + campanhaSelecionada.getId());
+        return "campanha.xhtml?faces-redirect=true";
+    }
+
     public String goToListaCampanha() {
         return "listarCampanha.xhtml?faces-redirect=true";
     }
 
     public void imprime() {
-        System.out.println("Id:" + campanha.getId() + " / ");
+        System.out.println("Id:" + campanha.getId() + " / " + campanhaSelecionada.getId());
         System.out.println("Nome:" + campanha.getNome());
         System.out.println("Descrição:" + campanha.getDescricao());
         System.out.println("Habilitada" + campanha.getHabilitada());
@@ -114,8 +124,12 @@ public class CampanhaBean implements Serializable {
         System.out.println("Data Cadastro" + campanha.getCadastro());
     }
 
-    public void imprimeId() {
-        System.out.println("Id: " + id);
+    public List<Campanha> getCampanhas() {
+        return campanhas;
+    }
+
+    public void setCampanhas(List<Campanha> campanhas) {
+        this.campanhas = campanhas;
     }
 
     public Campanha getCampanha() {
@@ -134,12 +148,28 @@ public class CampanhaBean implements Serializable {
         this.campanhaSelecionada = campanhaSelecionada;
     }
 
-    public String getId() {
-        return id;
+    public Date getDataInicio() {
+        return dataInicio;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setDataInicio(Date dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public Date getDataFim() {
+        return dataFim;
+    }
+
+    public void setDataFim(Date dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 
 }

@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <title>Centro Alternativo de Cultura</title>
+        <h:outputStylesheet name="./css/default.css" />
+        <h:outputStylesheet name="./css/cssLayout.css" />
+        <h:outputStylesheet name="grid/grid.css" library="primefaces" />
+        <h:outputStylesheet name="./css/bootstrap.min.css" />
+        <!-- Bootstrap -->
+        <link href="public/assets/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="public/assets/css/style.css" rel="stylesheet"/>  
+    </h:head>
+    <h:body>
+        <div class="ui-g ui-fluid nopad">
+            <div class="ui-g-12">
+
+
+
+                <h:form id="form">
+                    <p:growl showDetail="true" showSummary="true" />
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-2"></div>
+                        <div class="ui-g-8 ">
+                            <p:panel class="ui-g-12" style="width: 100%">
+                                <f:facet name="header">
+                                    Formulário de cadastro
+                                </f:facet>
+
+                                <p:panelGrid columns="1" layout="grid">
+                                    <p:outputLabel for="cpfOuCnpj" value="cpf ou cnpj" />
+                                    <p:inputText id="cpfOuCnpj" value="#{colaboradorBean.colaborador.cpfOuCnpj}" />
+                                    <h3></h3>
+                                    <h3>Dados de acesso</h3>
+
+                                    <p:outputLabel for="perfil" value="Perfil" />
+                                    <p:selectOneRadio styleClass="radio" id="perfil" value="#{colaboradorBean.colaborador.perfil}" >
+                                        <f:selectItem  itemLabel="Colaborador" itemValue="C"  />														
+                                        <f:selectItem  itemLabel= "Doador" itemValue="D"  />														
+                                        <f:selectItem  itemLabel= "Voluntário" itemValue="V"  />													
+                                    </p:selectOneRadio>
+
+                                    <p:outputLabel for="email" value="Login do usuário (email)" />
+                                    <p:inputText id="email" value="#{colaboradorBean.colaborador.email}"/>
+
+                                    <p:outputLabel for="senha" value="Senha" />
+                                    <p:password id="senha" value="#{colaboradorBean.colaborador.senha}"/>
+
+                                    <p:outputLabel for="nome" value="Nome" />
+                                    <p:inputText id="nome" value="#{colaboradorBean.colaborador.nome}"/>
+
+                                    <h3></h3>
+                                    <h3>Dados de endereço</h3>
+
+                                    <p:outputLabel for="logradouro" value="Logradouro" />
+                                    <p:inputText id="logradouro" value="#{colaboradorBean.colaborador.logradouro}"/>
+
+                                    <p:outputLabel for="numero" value="Número" />
+                                    <p:inputText id="numero" value="#{colaboradorBean.colaborador.numero}"/>
+
+                                    <p:outputLabel for="complemento" value="Complemento" />
+                                    <p:inputText id="complemento" value="#{colaboradorBean.colaborador.complemento}"/>
+
+                                    <p:outputLabel for="cep" value="Cep" />
+                                    <p:inputText id="cep" value="#{colaboradorBean.colaborador.cep}"/>
+
+                                    <p:outputLabel for="bairro" value="Bairro" />
+                                    <p:inputText id="bairro" value="#{colaboradorBean.colaborador.bairro}"/>
+
+
+                                    <h3></h3>
+                                    <h3>Dados de auxiliares</h3>
+                                    <p:outputLabel for="telefone" value="telefone/celular" />
+                                    <p:inputText id="telefone" value="#{colaboradorBean.colaborador.celular}"/>
+
+                                    <p:outputLabel for="profissao" value="Profissao" />
+                                    <p:inputText id="profissao" value="#{colaboradorBean.colaborador.profissao}"/>
+
+                                    <p:outputLabel for="comoColaborar" value="Como colaborar" />
+                                    <p:inputText id="comoColaborar" value="#{colaboradorBean.colaborador.comoColaborar}"/>
+
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="1" layout="grid">
+                                    <p:commandButton value="Salvar novo usuário" 
+                                                     action="#{colaboradorBean.salvarNovoCadastro()}"/>
+                                    <p:commandButton value="teste colaborador cadasatrado"
+                                                     action="/novoCadastro2Sucesso.xhtml?faces-redirect=true"/>
+                                </p:panelGrid>
+
+
+                            </p:panel>
+
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </h:body>
+</html>
+

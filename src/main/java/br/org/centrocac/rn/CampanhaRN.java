@@ -7,6 +7,7 @@ package br.org.centrocac.rn;
 
 import br.org.centrocac.dao.CampanhaDAO;
 import br.org.centrocac.entidade.Campanha;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,5 +44,9 @@ public class CampanhaRN {
 
     public Campanha obter(Integer id) {
         return dao.obter(Campanha.class, id);
+    }
+
+    public List<Campanha> obter(Date inicio, Date fim, boolean habilitado) {
+        return dao.obter(inicio, fim, habilitado);
     }
 }
