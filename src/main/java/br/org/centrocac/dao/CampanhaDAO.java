@@ -30,8 +30,7 @@ public class CampanhaDAO extends GenericDAO<Campanha> {
         EntityManager em = getEntityManager();
         String sql = "select c from Campanha c "
                 + "where "
-                + ":inicio <= c.dataFim and "
-                + ":fim <= c.dataFim and "
+                + "c.dataFim between :inicio and :fim and "
                 + "c.habilitada = :habilitada ";
         Query query = em.createQuery(sql);
         List<Campanha> resposta = null;

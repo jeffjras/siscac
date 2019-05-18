@@ -5,6 +5,7 @@
  */
 package br.org.centrocac.util;
 
+import br.org.centrocac.entidade.Campanha;
 import br.org.centrocac.entidade.Colaborador;
 import java.util.Properties;
 import javax.mail.Address;
@@ -84,7 +85,7 @@ public class MailUtil {
 
     private boolean sendEmail(String to, String assunto, String corpo) {
         Session session = getSession();
-        to ="lucastsutsumi@gmail.com";
+        to = "lucastsutsumi@gmail.com";
         System.out.println("Email do destinatario" + to);
         System.out.println("");
         /**
@@ -120,7 +121,7 @@ public class MailUtil {
             String assunto = "Redefinição de senha";
 
             String corpo = "Olá, tudo bem? \n"
-                    + "sua senha foi alterada com sucesso, caso queria entra no sistema sua nova senha é " + novaSenha + "\n" 
+                    + "sua senha foi alterada com sucesso, caso queria entra no sistema sua nova senha é " + novaSenha + "\n"
                     + "Obrigado pela sua ajuda!! Contamos com você";
             return sendEmail(c.getEmail(), assunto, corpo);
         } catch (Exception e) {
@@ -128,4 +129,18 @@ public class MailUtil {
         }
     }
 
+    public boolean sendEmailTemplateDivulgacaoCamapanha(Colaborador c, Campanha ca) {
+        try {
+            String assunto = "Lembrete de campanha";
+
+            String corpo = "Olá " + c.getNome() + ", tudo bem? \n"
+                    + "estamos enviando esta mensagem para informar sobre a nossa campanha " + ca.getNome() + "\n"
+                    + "esta campanha é sobre: " + ca.getDescricao() + "\n"
+                    + "caso queira ajudar acesso nosso site: [urlSite] \n"
+                    + "Obrigado pela sua ajuda!! Contamos com você";
+            return sendEmail(c.getEmail(), assunto, corpo);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
