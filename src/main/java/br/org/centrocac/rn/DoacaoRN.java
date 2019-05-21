@@ -6,6 +6,7 @@
 package br.org.centrocac.rn;
 import br.org.centrocac.dao.DoacaoDAO;
 import br.org.centrocac.entidade.Doacao;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,6 +43,10 @@ public class DoacaoRN {
 
     public Doacao obter(Integer id) {
         return dao.obter(Doacao.class, id);
+    }
+    
+    public Doacao obeterPorColaboradorCadastro(Integer idcolaborador, Date cadastro){
+        return dao.obterPorColaboradorCadastro(idcolaborador, cadastro);
     }
 
 }

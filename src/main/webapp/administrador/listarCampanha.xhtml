@@ -8,67 +8,70 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <div class="ui-g">
-            <div class="ui-g-12">
-                <h:form id="formGerencia">
-                    <h1>Lista de Campanhas</h1>
-                    <p:growl showDetail="true" showSummary="true" />
-                    <p:messages id="mensagem"/>
+        <!--div class="ui-g">
+            <div class="ui-g-12"-->
+        <div class="card-body">
+            <h:form id="formGerencia">
+                <div class="card-header">Lista de Campanhas</div>
+                <h1></h1>
+                <p:growl showDetail="true" showSummary="true" />
+                <p:messages id="mensagem"/>
 
-                    <p:panelGrid id="panelGrid" columns="1" layout="grid">
-                        <p:button onclick="#{campanhaBeanOld.limpar()}" outcome="/administrador/campanhaBackup.xhtml" value="Nova Campanha"/>
+                <p:panelGrid id="panelGrid" columns="1" layout="grid">
+                    <p:button onclick="#{campanhaBeanOld.limpar()}" outcome="/administrador/campanhaBackup.xhtml" value="Nova Campanha"/>
 
-                        <p:row>
-                            
-                            <p:datePicker id="dataInicio" value="#{listaCampanhaBean.dataInicio}" showIcon="true"/>
+                    <p:row>
 
-                            <p:datePicker id="dataFim" value="#{listaCampanhaBean.dataFim}" showIcon="true" />
+                        <p:datePicker id="dataInicio" value="#{listaCampanhaBean.dataInicio}" showIcon="true"/>
 
-                            <p:outputLabel value="Habilitada: "/>
-                            <p:selectBooleanCheckbox value="#{listaCampanhaBean.ativo}" label="Ativo"/>
+                        <p:datePicker id="dataFim" value="#{listaCampanhaBean.dataFim}" showIcon="true" />
 
-                            <p:commandButton title="Pesquisar" action="#{listaCampanhaBean.listarTodos()}" update="@form"/>
-                        </p:row>
-                            
-                    </p:panelGrid>
+                        <p:outputLabel value="Habilitada: "/>
+                        <p:selectBooleanCheckbox value="#{listaCampanhaBean.ativo}" label="Ativo"/>
 
-                    <p:panelGrid id="panelGridDataTable" columns="1">
-                        <p:dataTable id="minhaTabela" var="item"
-                                     value="#{campanhaBeanOld.listarTodos()}" rows="10" paginator="true"
-                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                     rowsPerPageTemplate="10,15,20">
-                            <f:facet name="header">
-                                Campanhas
-                            </f:facet>
-                            <p:column headerText="Cód.">
-                                <h:outputText value="#{item.id}" />
-                            </p:column>
-                            <p:column headerText="Nome">
-                                <h:outputText value="#{item.nome}" />
-                            </p:column>
-                            <p:column headerText="Ativo">
-                                <h:outputText value="#{item.habilitada? 'Sim' : 'Não'}">
-                                </h:outputText>
-                            </p:column>
-                            <p:column headerText="Encerramento">
-                                <h:outputText value="#{item.dataFim}">
-                                    <f:convertDateTime pattern="dd/MM/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column headerText="Arrecadado">
-                                <h:outputText value="#{item.arrecadado}" />
-                            </p:column>
-                            <p:column style="width:32px;text-align: center">
-                                <p:button icon="pi pi-pencil" title="Editar" outcome="campanha" >
-                                    <f:param name="id" value="#{item.id}" />
-                                </p:button>                                                 
-                            </p:column>
+                        <p:commandButton title="Pesquisar" action="#{listaCampanhaBean.listarTodos()}" update="@form"/>
+                    </p:row>
 
-                        </p:dataTable>   
-                    </p:panelGrid>
-                </h:form>
+                </p:panelGrid>
 
-            </div>
+                <p:panelGrid id="panelGridDataTable" columns="1">
+                    <p:dataTable id="minhaTabela" var="item"
+                                 value="#{campanhaBeanOld.listarTodos()}" rows="10" paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="10,15,20">
+                        <f:facet name="header">
+                            Campanhas
+                        </f:facet>
+                        <p:column headerText="Cód.">
+                            <h:outputText value="#{item.id}" />
+                        </p:column>
+                        <p:column headerText="Nome">
+                            <h:outputText value="#{item.nome}" />
+                        </p:column>
+                        <p:column headerText="Ativo">
+                            <h:outputText value="#{item.habilitada? 'Sim' : 'Não'}">
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Encerramento">
+                            <h:outputText value="#{item.dataFim}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Arrecadado">
+                            <h:outputText value="#{item.arrecadado}" />
+                        </p:column>
+                        <p:column style="width:32px;text-align: center">
+                            <p:button icon="pi pi-pencil" title="Editar" outcome="campanha" >
+                                <f:param name="id" value="#{item.id}" />
+                            </p:button>                                                 
+                        </p:column>
+
+                    </p:dataTable>   
+                </p:panelGrid>
+            </h:form>
+
+            <!--/div>
+        </div-->
         </div>
 
     </ui:define>
@@ -154,6 +157,7 @@
                     </div>
                 </div>                      
             </div>
+
         </ui:define>
     </ui:remove>
 </ui:composition>

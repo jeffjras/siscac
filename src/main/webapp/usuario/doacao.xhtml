@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">
+        Doação
+    </ui:define>
+
+    <ui:define name="content">
+        
+        <h:body>
+            <h:form id="form">
+
+                <p:panelGrid columns="2">
+                    <p:outputLabel>Dia</p:outputLabel>
+                    <p:inputText disabled="true" value="#{doacaoBean.entidade.cadastro}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </p:inputText>
+
+                    <p:outputLabel>Doador</p:outputLabel>
+                    <p:inputText disabled="true" value="#{doacaoBean.entidade.colaborador.nome}" >
+
+                    </p:inputText>
+
+                    <p:outputLabel>Total</p:outputLabel>
+                    <p:inputText disabled="true" value="#{doacaoBean.entidade.total}" /> 
+                    
+                    <br></br>                    
+                    <p:button value="Doar" icon="pi pi-plus-circle" outcome="itemDoacao">
+                        <f:param name="id" value="#{doacaoBean.entidade.id}" />
+                    </p:button>
+
+                </p:panelGrid>
+
+
+
+
+
+                <p:dataGrid id="minhaTabela" var="item"
+                            value="#{doacaoBean.entidade.itemDoacaoList}" rows="10" paginator="true"
+                            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                            rowsPerPageTemplate="10,15,20">
+                    <f:facet name="header">
+                        Itens da Doação
+                    </f:facet>
+                    <p:column headerText="Cód.">
+                        <h:outputText value="#{item.id}" />
+                    </p:column>
+                    <p:column headerText="Descrição.">
+                        <h:outputText value="#{item.descricao}" />
+                    </p:column>
+                    <p:column headerText="Cód.">
+                        <h:outputText value="#{item.valor}" />
+                    </p:column>
+                    <p:column headerText="Ações">
+                        <h:outputText value="" />
+                    </p:column>
+
+                </p:dataGrid>
+            </h:form>
+        </h:body>
+    </ui:define>
+</ui:composition>

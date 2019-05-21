@@ -7,118 +7,115 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="./css/default.css" />
-        <h:outputStylesheet name="./css/cssLayout.css" />
-        <h:outputStylesheet name="grid/grid.css" library="primefaces" />
-        <h:outputStylesheet name="./css/bootstrap.min.css" />
+
+        <h:outputStylesheet name="./js" />
+        <h:outputStylesheet name="./css/bootstrap.css" />
+        <h:outputStylesheet name="./css/style.css" />
 
         <title>
             <ui:insert name="title">
                 Donazione
             </ui:insert>
         </title>
+
     </h:head>
 
     <h:body>
-        <div class="ui-g">
-            <div class="ui-g-12">
-                <nav class="navbar navbar-default ui-g-nopad">
-                    <div class="container-fluid">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed"
-                                    data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                                    aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span> <span
-                                    class="icon-bar"></span> <span class="icon-bar"></span> <span
-                                    class="icon-bar"></span>
-                            </button>
-                            <a href="#{request.contextPath}/usuario/main.xhtml"><h:graphicImage
-                                    width="200px" library="images" name="logo_cac.png" alt="Logo"
-                                    styleClass="img-responsive">
-                                </h:graphicImage></a>			
-                        </div>
 
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse"
-                             id="bs-example-navbar-collapse-1">			
-                            <!-- form class="navbar-form navbar-left">
-                                    <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Pesquisar..."/>
+        <header class="navbar navbar-expand-md bg-dark " >
+            <a class="navbar-brand " href="#{request.contextPath}/usuario/main.xhtml">
+                <h:graphicImage
+                    height="40px" style="padding-left: 10px;" library="images" name="logo_CAC1.png" alt="Logo"
+                    styleClass="d-inline-block align-top"/>
+            </a>
+
+            <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" style="color: snow;" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        #{colaboradorBean.usuarioLogado.nome}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" >
+                        <a class="dropdown-item" href="#"><center>#{colaboradorBean.usuarioLogado.email}</center></a>
+                        <a class="dropdown-item" href="#"><center>#{colaboradorBean.perfilDoUsuarioLogado}</center></a>
+                        <div class="dropdown-item">
+                            <h:form onsubmit="return deletaConfirma();">
+                                <h:inputHidden id="id" value="#{colaboradorBean.colaborador.id}" />
+                                <p:menu styleClass="ui-g-12 ui-md-12">							   								   	
+                                    <p:menuitem value="Editar Conta"
+                                                url="#{request.contextPath}/usuario/colaboradorForm.xhtml"								
+                                                ajax="false" icon="pi pi-save"/>
+                                    <p:menuitem value="Excluir Conta"
+                                                action="#{colaboradorBean.excluir()}"								
+                                                ajax="false" icon="pi pi-refresh"/>																																	   											
+                                    <p:menuitem value="Sair"
+                                                url="#{request.contextPath}/j_spring_security_logout"
+                                                ajax="false" icon="pi pi-times"/>								
+                                </p:menu>
+                            </h:form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </header>
+
+        <div class="container-fluid">
+            <div class="row flex-xl-nowrap h-100" style="">
+                <div class="col-12 col-md-3 col-xl-2 bd-sidebar flex-column " style="background-color: #494e53; padding-left: 0; padding-right: 0;">
+                    <nav id="bd-menu-nav" class="bd-links collapse show">
+                        <button class="navbar-toggler d-xs-block d-sm-block d-md-none d-lg-none d-xl-none right" style="color: snow;" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon" style="transform: rotate(270deg); border: snow solid 1px; border-radius: inherit; height: 35px; padding-top: 3px;">|||</span>
+                        </button>
+                        <div class="collapse navbar-collapse show" id="navbarTogglerDemo02">
+                            <ul class="navbar-nav column mr-auto mt-2 mt-lg-0 " style="">
+                                <li class="nav-item w-100 d-md-block" style="padding-left: 15px;">
+                                    <a class="nav-link active" style="color: snow;" href="#{request.contextPath}/usuario/main.xhtml" >
+                                        <i class="pi pi-home"></i>
+                                        Início
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item w-100 d-sm-none d-md-block" style="padding-left: 15px;">
+                                    <a class="nav-link active" style="color: snow;" href="../administrador/listarCampanha.xhtml" >
+                                        <i class="pi pi-check"></i>
+                                        Campanhas
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <div class="accordion" id="accordionExample">                                    
+                                    <div class="" id="headingOne">
+                                        <li class="nav-item w-100" style="color: snow; padding-left: 15px;">
+                                            <a class="nav-link active" type="button" style="color: snow;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                <i class="pi pi-money-bill"></i>
+                                                Menu 1
+                                            </a>
+                                        </li>
                                     </div>
-                                    <button type="submit" class="btn btn-default">Buscar</button>
-                            </form-->
-                            <ul class="nav navbar-nav navbar-right">			           
-                                <li><a href="#"></a></li>
-                                <li class="dropdown"><a href="#" class="dropdown-toggle"
-                                                        data-toggle="dropdown" role="button" aria-haspopup="true"
-                                                        aria-expanded="false"><h:graphicImage library="images" name="faces/face-2.jpg" style="border-radius: 50%; width: 30px; height: 30px; margin-right: 10px;"/> #{usuarioBean.usuarioLogado.nome}<span class="caret"></span></a>
-                                    <ul class="dropdown-menu">						
-                                        <li><center>#{colaboradorBean.usuarioLogado.email}</center></li>
-                                        <li><center>#{colaboradorBean.perfilDoUsuarioLogado}</center></li>						
-                                        <li>
-                                            <h:form onsubmit="return deletaConfirma();">
-                                                <h:inputHidden id="id" value="#{colaboradorBean.colaborador.id}" />
-                                                <p:menu styleClass="ui-g-12 ui-md-12">							   								   	
-                                                    <p:menuitem value="Editar Conta"
-                                                                url="#{request.contextPath}/usuario/colaboradorForm.xhtml"								
-                                                                ajax="false" icon="pi pi-save"/>
-                                                    <p:menuitem value="Excluir Conta"
-                                                                action="#{colaboradorBean.excluir()}"								
-                                                                ajax="false" icon="pi pi-refresh"/>																																	   											
-                                                    <p:menuitem value="Sair"
-                                                                url="#{request.contextPath}/j_spring_security_logout"
-                                                                ajax="false" icon="pi pi-times"/>								
-                                                </p:menu>
-                                            </h:form>	
-                                        </li>																								
-                                    </ul>
+
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <li class="nav-item w-100 d-sm-none d-md-block" style="padding-left: 25px;">
+                                            <a class="nav-link active" style="color: snow;" href="../administrador/listarCampanha.xhtml" >
+                                                <i class="pi pi-money-bill"></i>
+                                                Submenu1
+                                                <span class="sr-only">(current)</span>
+                                            </a>
+                                        </li>
+                                    </div>
+                                </div>
+
+                                <li class="nav-item w-100" style="color: snow; padding-left: 15px;">
+                                    <a class="nav-link active" style="color: snow;" href="../administrador/listarCampanha.xhtml" >
+                                        <i class="pi pi-money-bill"></i>
+                                        Doacao
+                                        <span class="sr-only">(current)</span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
-                        <!-- /.navbar-collapse -->
-                    </div>
-                    <!-- /.container-fluid --> 
-                </nav>
-            </div>
+                    </nav>
+                </div>                    
 
-            <div class="ui-g-2 ui-md-2">
-                <!--  Menu -->
-                <div class="ui-g-12">
-                    <h:form>
-                        <p:growl id="messages" showDetail="false" />
-                        <!-- toggleable="true" -->
-                        <p:menu  styleClass="ui-g-12 ui-md-12">
-                            <p:submenu label="Campanhas">
-                                <p:menuitem value="Listar Campanhas" url="#{request.contextPath}/administrador/listarCampanha.xhtml" icon="pi pi-star"/>
-                                <p:menuitem value="Pesquisar Doador(TODO)" url="#{request.contextPath}/administrador/listarCampanha.xhtml" icon="pi pi-star"/>
-                                <p:menuitem value="Listar Doações Realizadas(TODO)" url="#{request.contextPath}/administrador/listarCampanha.xhtml" icon="pi pi-star"/>
-                                <p:menuitem value="Emitir Recibo(TODO)" url="#{request.contextPath}/administrador/listarCampanha.xhtml" icon="pi pi-star"/>							
-                            </p:submenu>
-                            <p:submenu label="Ações">
-                                <p:menuitem value="Listar Ações" url="#{request.contextPath}/administrador/listarAcaoBackup.xhtml" icon="pi pi-star"/>
-                                <p:menuitem value="Listar Voluntários" url="#{request.contextPath}/administrador/listarVoluntariosPorAcaoBackup.xhtml" icon="pi pi-star"/>
-                                <p:menuitem value="Pesquisar Voluntário" url="#{request.contextPath}/administrador/listarAcaoPorVoluntarioBackup.xhtml" icon="pi pi-star"/>
-                                <p:menuitem value="Emitir Certificado(TODO)" url="#" icon="pi pi-star"/>
-                            </p:submenu>
-                            <ui:remove>
-                                <p:submenu label="Gerenciamento">
-                                    <p:menuitem value="Emitir Recibo das Doações" icon="pi pi-star" />
-                                    <p:menuitem value="Listar Ações Realizadas" icon="pi pi-star" />
-                                </p:submenu>
-                            </ui:remove>
-                            <p:submenu label="Central de Ajuda">
-                                <p:menuitem value="FAQ (TODO)"
-                                            action="#" icon="pi pi-home" />							
-                            </p:submenu>
-                        </p:menu>
-                    </h:form>
-                </div>
-            </div>
-
-            <div class="ui-g-10 ui-md-10 ui-g-nopad">
-                <div class="ui-g-12 ui-g-nopad">
-                    <div id="content">
+                <div class="col-12 col-md-9 col-xl-10">
+                    <div class="card bg-light p-3" style="margin: 10px;">
                         <ui:insert name="content" >  
                             Content
                         </ui:insert>
@@ -126,27 +123,34 @@
                 </div>
             </div>
 
-            <div class="ui-g-12 rodape">
-                <!-- footer -->
-                <div class="ui-g-12 layout-footer">
-                    <div class="ui-g-12 ui-md-6 footer-left">
-                        <span class="footer-info-left"><a href="#">UFPA</a> - Universidade Federal
-                            do Pará</span>
-                    </div>
-                    <div class="ui-g-12 ui-md-6 footer-right">
-                        <span class="footer-info-right"><a href="#">PASR</a> - Projeto de
-                            Arquitetura de Software para Reutilização, Projeto <a href="#">Donazione</a> ©
-                            <script>document.write(new Date().getFullYear())</script>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
+
+        <!-- footer -->
+        <footer class="col-md-12" style="position: fixed; left: 0; bottom: 0; background-color: lightsteelblue;" >
+            <div class="ui-g-12 layout-footer">
+                <div class="ui-g-12 ui-md-6 footer-left">
+                    <span class="footer-info-left "><a href="#">UFPA</a> - Universidade Federal
+                        do Pará</span>
+                </div>
+                <div class="ui-g-12 ui-md-6 footer-right">
+                    <span class="footer-info-right"><a href="#">PASR</a> - Projeto de
+                        Arquitetura de Software para Reutilização, Projeto <a href="#">Donazione</a> ©
+                        <script>document.write(new Date().getFullYear())</script>
+                    </span>
+                </div>
+            </div>
+        </footer><!-- /#container fluid-->
+
+
+
+
         <h:outputScript library="js" name="valida.js" />
-        <!--  h:outputScript library="js" name="jquery.js" /-->
+        <h:outputScript library="js" name="jquery.js"/>
         <h:outputScript library="js" name="bootstrap.min.js" />
+        <h:outputScript library="js" name="bootstrap.js" />
+        <h:outputScript library="js" name="bootstrap.bundle.min.js" />
+
     </h:body>
 
 </html>
