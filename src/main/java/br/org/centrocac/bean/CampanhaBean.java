@@ -37,7 +37,6 @@ public class CampanhaBean implements Serializable {
 
         System.out.println("init campanha bean!!");
         if (id != null) {
-
             if (id.isEmpty() == false) {
                 System.out.println(Integer.valueOf(id).toString());
                 this.findOneC(Integer.valueOf(id));

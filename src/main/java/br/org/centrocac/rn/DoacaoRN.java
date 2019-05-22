@@ -45,6 +45,10 @@ public class DoacaoRN {
         return dao.obter(Doacao.class, id);
     }
     
+    public Boolean existeDoacao(Integer colaborador, Date cadastro){
+        return dao.existeDoacao(colaborador, cadastro);
+    }
+    
     public Doacao obeterPorColaboradorCadastro(Integer idcolaborador, Date cadastro){
         return dao.obterPorColaboradorCadastro(idcolaborador, cadastro);
     }

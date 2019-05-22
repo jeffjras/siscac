@@ -77,19 +77,19 @@ public class DoacaoBean {
     }
 
     private void buscarDoacaoPorColaboradorCadastro() {
+        Boolean existeDoacao = rn.existeDoacao(UtilBean.obterContaLogada().getId(), cadastro);
+        System.out.println("existe doacao: " + existeDoacao.toString());
 
-        entidadeSelecionada = rn.obeterPorColaboradorCadastro(UtilBean.obterContaLogada().getId(), cadastro);
-
-        if (entidadeSelecionada.equals(entidade)) {
+        if (existeDoacao) {
+            entidadeSelecionada = rn.obeterPorColaboradorCadastro(UtilBean.obterContaLogada().getId(), cadastro);
+            System.out.println("entidade doacao do banco");
+            entidade = entidadeSelecionada;            
+        } else {
             System.out.println("entidade doacao zerada");
             entidade.setCadastro(cadastro);
             entidade.setColaborador(colaborador);
             entidade.setTotal(total);
             rn.salvar(entidade);
-
-        } else {
-            System.out.println("entidade doacao do banco");
-            entidade = entidadeSelecionada;
         }
 
     }
