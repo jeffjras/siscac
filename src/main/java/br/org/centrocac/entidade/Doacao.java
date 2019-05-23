@@ -13,6 +13,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -140,7 +141,6 @@ public class Doacao implements Serializable {
 
     @Override
     public String toString() {
-        return "br.org.centrocac.entidade.Doacao[ id=" + id + " ]";
-    }
-    
+        return "Doacao{" + "id=" + id + ", cadastro=" + cadastro + ", total=" + total + ", colaborador=" + colaborador + ", itemDoacaoList=" + itemDoacaoList + '}';
+    }  
 }

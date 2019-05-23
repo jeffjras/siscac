@@ -20,6 +20,16 @@ import javax.persistence.TypedQuery;
  * @author fabio
  */
 public class DoacaoDAO extends GenericDAO<Doacao> {
+    
+    public Doacao obterDoacao(Integer id){
+        EntityManager em = getEntityManager();
+        Query query = em.createQuery("select d from Doacao d where d.id = :id");
+        query.setParameter("id", id);
+        query.getResultList();
+        Doacao d = new Doacao();
+        
+        return d;        
+    }
 
     public List<Doacao> obter(Colaborador colaborador) {
         EntityManager em = getEntityManager();
@@ -59,22 +69,30 @@ public class DoacaoDAO extends GenericDAO<Doacao> {
         } else {
             existe = false;
         }
+        for (Doacao doacao : resposta) {
+            System.out.println("index: " + resposta.indexOf(doacao) + " " + doacao.getId().toString()  );
+        }
         return existe;
     }
 
     public Doacao obterPorColaboradorCadastro(Integer idcolaborador, Date cadastro) {
         EntityManager em = getEntityManager();
-        TypedQuery<Doacao> query = em.createQuery("select d from Doacao d where d.colaborador.id = :idColaborador  d.cadastro = :cadastro",Doacao.class);
-        Doacao resposta = new Doacao();
+        Query query = em.createQuery("select d from Doacao d where d.colaborador.id = :idColaborador and d.cadastro = :cadastro");
+        List<Doacao> resposta = new ArrayList();
         try {
             resposta = query.setParameter("idColaborador", idcolaborador)
-                    .setParameter("cadastro", cadastro)
-                    .getSingleResult();
+                    .setParameter("cadastro", cadastro,TemporalType.DATE)
+                    .getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.err);
         } finally {
             em.close();
         }
-        return resposta;
+        Doacao d = new Doacao();
+        for (Doacao doacao : resposta) {
+            d = doacao;
+            System.out.println("index: " + resposta.indexOf(doacao) + " " + doacao.getId().toString()  );
+        }
+        return d;
     }
 }

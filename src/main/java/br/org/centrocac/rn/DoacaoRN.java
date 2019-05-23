@@ -42,7 +42,8 @@ public class DoacaoRN {
     }
 
     public Doacao obter(Integer id) {
-        return dao.obter(Doacao.class, id);
+        // return dao.obterDoacao(id);
+        return dao.obter(Doacao.class,id);
     }
     
     public Boolean existeDoacao(Integer colaborador, Date cadastro){

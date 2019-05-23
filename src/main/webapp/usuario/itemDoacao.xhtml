@@ -12,12 +12,40 @@
     </ui:define>
     <ui:define name="content">
         <h:form>
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
             <f:metadata>
                 <f:viewParam name="id" value="#{itemDoacaoBean.idDoacao}" />
             </f:metadata>
+            <div class="row p-1">
+                <p:outputLabel class="col-2 right flex-column" value="Id:"/>
+                <p:inputText class="col-4" disabled="true" value="#{itemDoacaoBean.itemDoacao.id}" />
+            </div>
 
-            <p:outputLabel value="Id:"/>
-            <p:outputLabel value="#{itemDoacaoBean.idDoacao}"/>
+            <div class="row p-1">
+                <p:outputLabel class=" col-2" value="Descrição:"/>
+                <p:inputText class="col-4" size="80" value="#{itemDoacaoBean.itemDoacao.descricao}" />
+            </div>
+            <div class="row p-1">
+                <p:outputLabel class="col-2" value="Valor:"/>
+                <p:inputNumber class="col-4" decimalSeparator="," decimalPlaces="2" symbol="R$ " value="#{itemDoacaoBean.itemDoacao.valor}"  />
+            </div>
+
+            <div class="row p-1">
+                <p:outputLabel class="col-2" for="campanha" value="Campanha:" />
+                <p:selectOneMenu class="col-4" id="campanha" 
+                                 value="#{itemDoacaoBean.itemDoacao.campanha}" converter="convCampanha" 
+                                 panelStyle="width:180px" effect="fade" style="width:160px" 
+                                 filter="true" filterMatchMode="startsWith">
+                    <f:selectItem itemLabel="Doar para o Centro" itemValue="#{null}" />
+                    <f:selectItems value="#{itemDoacaoBean.campanhas}" var="campanha" itemLabel="#{campanha.nome}" itemValue="#{campanha}" />
+                </p:selectOneMenu>
+            </div>
+            <div class="row  justify-content-end col-6">
+                <p:commandButton class="col-4 " value="Confirmar Doação" 
+                                 actionListener="#{itemDoacaoBean.salvarDoacao()}"/>
+            </div>
         </h:form>
     </ui:define>
 </ui:composition>
