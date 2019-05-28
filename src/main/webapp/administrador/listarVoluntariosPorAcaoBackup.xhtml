@@ -25,6 +25,13 @@
                 <p:commandButton value="Pesquisar" actionListener="#{voluntarioPorAcaoBean.filtrarPorAcao()}" 
                                  update=":formGerencia:panelGridDataTable">
                 </p:commandButton>
+
+                <p:commandButton value="baixar pdf" 
+                                 action="#{voluntarioPorAcaoBean.gerarPdf()}" 
+                                 ajax="false"
+                                 onclick="this.form.target = '_blank'"
+                                 />
+                
             </p:panelGrid>
 
             <p:panelGrid id="panelGridDataTable" columns="1">

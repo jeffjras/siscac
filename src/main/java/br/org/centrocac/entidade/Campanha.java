@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,6 +17,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -35,16 +39,16 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "campanha")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Campanha.findAll", query = "SELECT c FROM Campanha c")
-    , @NamedQuery(name = "Campanha.findById", query = "SELECT c FROM Campanha c WHERE c.id = :id")
-    , @NamedQuery(name = "Campanha.findByNome", query = "SELECT c FROM Campanha c WHERE c.nome = :nome")
-    , @NamedQuery(name = "Campanha.findByDescricao", query = "SELECT c FROM Campanha c WHERE c.descricao = :descricao")
-    , @NamedQuery(name = "Campanha.findByCadastro", query = "SELECT c FROM Campanha c WHERE c.cadastro = :cadastro")
-    , @NamedQuery(name = "Campanha.findByHabilitada", query = "SELECT c FROM Campanha c WHERE c.habilitada = :habilitada")
-    , @NamedQuery(name = "Campanha.findByDataFim", query = "SELECT c FROM Campanha c WHERE c.dataFim = :dataFim")
-    , @NamedQuery(name = "Campanha.findByMeta", query = "SELECT c FROM Campanha c WHERE c.meta = :meta")
-    , @NamedQuery(name = "Campanha.findByDoacaoMinima", query = "SELECT c FROM Campanha c WHERE c.doacaoMinima = :doacaoMinima")
-    , @NamedQuery(name = "Campanha.findByArrecadado", query = "SELECT c FROM Campanha c WHERE c.arrecadado = :arrecadado")})
+    @NamedQuery(name = "Campanha.findAll", query = "SELECT c FROM Campanha c"),
+    @NamedQuery(name = "Campanha.findById", query = "SELECT c FROM Campanha c WHERE c.id = :id"),
+    @NamedQuery(name = "Campanha.findByNome", query = "SELECT c FROM Campanha c WHERE c.nome = :nome"),
+    @NamedQuery(name = "Campanha.findByDescricao", query = "SELECT c FROM Campanha c WHERE c.descricao = :descricao"),
+    @NamedQuery(name = "Campanha.findByCadastro", query = "SELECT c FROM Campanha c WHERE c.cadastro = :cadastro"),
+    @NamedQuery(name = "Campanha.findByHabilitada", query = "SELECT c FROM Campanha c WHERE c.habilitada = :habilitada"),
+    @NamedQuery(name = "Campanha.findByDataFim", query = "SELECT c FROM Campanha c WHERE c.dataFim = :dataFim"),
+    @NamedQuery(name = "Campanha.findByMeta", query = "SELECT c FROM Campanha c WHERE c.meta = :meta"),
+    @NamedQuery(name = "Campanha.findByDoacaoMinima", query = "SELECT c FROM Campanha c WHERE c.doacaoMinima = :doacaoMinima"),
+    @NamedQuery(name = "Campanha.findByArrecadado", query = "SELECT c FROM Campanha c WHERE c.arrecadado = :arrecadado")})
 public class Campanha implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -94,6 +98,14 @@ public class Campanha implements Serializable {
     private List<ItemDoacao> itemDoacaoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "campanha")
     private List<ItemCampanha> itemCampanhaList;
+
+    @ManyToMany
+    @JoinTable(name = "campanha_acao", joinColumns
+            = {
+                @JoinColumn(name = "campanha_id")}, inverseJoinColumns
+            = {
+                @JoinColumn(name = "acao_id")})
+    private List<Acao> acaoList;
 
     public Campanha() {
     }
@@ -204,21 +216,63 @@ public class Campanha implements Serializable {
         this.itemCampanhaList = itemCampanhaList;
     }
 
+    public List<Acao> getAcaoList() {
+        return acaoList;
+    }
+
+    public void setAcaoList(List<Acao> acaoList) {
+        this.acaoList = acaoList;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 5;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        hash = 41 * hash + Objects.hashCode(this.nome);
+        hash = 41 * hash + Objects.hashCode(this.descricao);
+        hash = 41 * hash + Objects.hashCode(this.cadastro);
+        hash = 41 * hash + (this.habilitada ? 1 : 0);
+        hash = 41 * hash + Objects.hashCode(this.dataFim);
+        hash = 41 * hash + Objects.hashCode(this.meta);
+        hash = 41 * hash + Objects.hashCode(this.doacaoMinima);
+        hash = 41 * hash + Objects.hashCode(this.arrecadado);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Campanha)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        Campanha other = (Campanha) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Campanha other = (Campanha) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        if (!Objects.equals(this.cadastro, other.cadastro)) {
+            return false;
+        }
+        if (this.habilitada != other.habilitada) {
+            return false;
+        }
+        if (!Objects.equals(this.dataFim, other.dataFim)) {
+            return false;
+        }
+        if (!Objects.equals(this.meta, other.meta)) {
+            return false;
+        }
+        if (!Objects.equals(this.doacaoMinima, other.doacaoMinima)) {
+            return false;
+        }
+        if (!Objects.equals(this.arrecadado, other.arrecadado)) {
             return false;
         }
         return true;
@@ -226,7 +280,7 @@ public class Campanha implements Serializable {
 
     @Override
     public String toString() {
-        return "br.org.centrocac.entidade.Campanha[ id=" + id + " ]";
+        return "Campanha{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", cadastro=" + cadastro + ", habilitada=" + habilitada + ", dataFim=" + dataFim + ", meta=" + meta + ", doacaoMinima=" + doacaoMinima + ", arrecadado=" + arrecadado + ", itemDoacaoList=" + itemDoacaoList + ", itemCampanhaList=" + itemCampanhaList + ", acaoList=" + acaoList + '}';
     }
-    
+
 }

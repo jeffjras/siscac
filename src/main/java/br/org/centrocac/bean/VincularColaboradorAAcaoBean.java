@@ -58,23 +58,6 @@ public class VincularColaboradorAAcaoBean {
         colaboradorList = COLABORADOR_RN.obterTodosColaboradoresDisponiveisParACAO(id);
     }
 
-//    public String salvar() {
-//        entidade.setVoluntariosList(colaboradorList);
-//        if (RN.salvar(entidade)) {
-//            UtilBean.criarMensagemDeAviso("Operação efetuda com sucesso!");
-//            limparCampos();
-//            return outcome;
-//        } else {
-//            UtilBean.criarMensagemDeErro("Não foi possível efetuar a operação!");
-//            return null;
-//        }
-//    }
-//
-//    public String cancelar() {
-//        limparCampos();
-//        return outcome;
-//    }
-
     public void limparCampos() {
         entidade = new Acao();
         UtilBean.removerDaSessao("id");

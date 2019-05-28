@@ -9,6 +9,7 @@ import br.org.centrocac.entidade.Acao;
 import br.org.centrocac.entidade.Colaborador;
 import br.org.centrocac.rn.ColaboradorRN;
 import br.org.centrocac.util.MailUtil;
+import br.org.centrocac.util.RelatorioUtil;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -51,6 +52,10 @@ public class VoluntarioPorAcaoBean {
         return null;
     }
 
+    public void gerarPdf() {
+        RelatorioUtil reportGenerator = new RelatorioUtil();
+        reportGenerator.gerarPDF(1);
+    }
     public Acao getEntidade() {
         return entidade;
     }
