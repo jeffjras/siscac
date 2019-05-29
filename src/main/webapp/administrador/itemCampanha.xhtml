@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form id="formGerencia">
+            <div class="card-header">Itens da Campanha</div>
+            <h1></h1>
+            <p:growl showDetail="true" showSummary="true" />
+            <p:messages id="mensagem"/>
+
+            <p:panelGrid id="panelGrid" columns="2" layout="grid">
+                <h:outputText value="Cód."/>
+                <h:outputText value="#{itemCampanhaBean.campanha.id}"/>
+                
+                <h:outputText value="Nome:"/>
+                <h:outputText value="#{itemCampanhaBean.campanha.nome}"/>
+                              
+                <h:outputText value="Descrição:"/>
+                <h:outputText value="#{itemCampanhaBean.campanha.descricao}"/>
+                
+                <h:outputText value="Data de Fim:"/>
+                <h:outputText value="#{itemCampanhaBean.campanha.dataFim}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </h:outputText>
+                
+                <p:button value="Item" icon="pi pi-plus" class="btn btn-primary" 
+                          outcome="adicionarItemCampanha">
+                    <f:param name="id" id="#{itemCampanhaBean.campanha.id}"/>
+                </p:button>
+
+            </p:panelGrid>
+
+            <p:panelGrid id="panelGridDataTable" columns="1">
+                <p:dataTable id="minhaTabela" var="item"
+                             value="#{itemCampanhaBean.listarTodos()}" rows="10" paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="10,15,20">
+                    <f:facet name="header">
+                        Itens da Campanha
+                    </f:facet>
+                    <p:column headerText="Cód.">
+                        <h:outputText value="#{item.id}" />
+                    </p:column>
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{item.nome}" />
+                    </p:column>
+                    <p:column headerText="Qtde.">
+                        <h:outputText value="#{item.arrecadado}" />
+                    </p:column>
+                </p:dataTable>   
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

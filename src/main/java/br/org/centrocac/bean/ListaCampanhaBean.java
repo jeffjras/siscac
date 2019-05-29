@@ -34,13 +34,14 @@ public class ListaCampanhaBean implements Serializable {
     private Date dataInicio = null, dataFim = null;
     private Boolean ativo = true;
     private CampanhaRN campanhaRN = new CampanhaRN();
+    private Campanha campanhaSelecionada = new Campanha();
 
     public List<Campanha> listarTodos() {
 
         if (dataInicio != null && dataFim != null || ativo == false) {
             campanhas = campanhaRN.obter(dataInicio, dataFim, ativo);
             return campanhas;
-        }  else {
+        } else {
             campanhas = campanhaRN.obterTodos();
             return campanhas;
         }
@@ -62,6 +63,24 @@ public class ListaCampanhaBean implements Serializable {
                 sender.sendEmailTemplateDivulgacaoCamapanha(colaboradore, c);
             }
             UtilBean.criarMensagemDeInformacao("Emails enviados para os colaboradores! colabs N°: " + colaboradores.size());
+        }
+
+    }
+
+    public void campanhaSelec(Campanha campanha) {
+        System.out.println("selecionar campanha para exclusão");
+        campanhaSelecionada = campanha;
+        System.out.println("nome campanha selecionada" + campanhaSelecionada.getNome());
+    }
+
+    public void excluirCampanha() {
+        try {
+            campanhaRN.excluir(campanhaSelecionada);
+            UtilBean.criarMensagemDeInformacao("Campanha excluida!");
+            campanhaSelecionada= new Campanha();
+
+        } catch (Exception e) {
+            UtilBean.criarMensagemDeAviso("Erro ao excluir campanha", e.getMessage());
         }
 
     }
@@ -96,6 +115,14 @@ public class ListaCampanhaBean implements Serializable {
 
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
+    }
+
+    public Campanha getCampanhaSelecionada() {
+        return campanhaSelecionada;
+    }
+
+    public void setCampanhaSelecionada(Campanha campanhaSelecionada) {
+        this.campanhaSelecionada = campanhaSelecionada;
     }
 
 }

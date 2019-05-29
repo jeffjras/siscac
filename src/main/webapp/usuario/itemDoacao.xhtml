@@ -12,12 +12,45 @@
     </ui:define>
     <ui:define name="content">
         <h:form>
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
             <f:metadata>
                 <f:viewParam name="id" value="#{itemDoacaoBean.idDoacao}" />
             </f:metadata>
 
-            <p:outputLabel value="Id:"/>
-            <p:outputLabel value="#{itemDoacaoBean.idDoacao}"/>
+            <div class="row p-1">
+                <p:outputLabel class=" col-2" value="Descrição:"/>
+                <p:inputText class="col-4" readonly="true" size="80" value="#{itemDoacaoBean.itemDoacao.descricao = 'Doação em Dinheiro'}"></p:inputText>
+            </div>  
+            <div class="row p-1">
+                <p:outputLabel class="col-2" for="campanha" value="Campanha:" />
+                <p:selectOneMenu class="col-4" id="campanha"
+                                 value="#{itemDoacaoBean.campanha}" converter="convCampanha" 
+                                 panelStyle="width:180px" effect="fade" style="width:160px" >
+                    <f:selectItem itemLabel="Doar para o Centro" itemValue="#{null}" />
+                    <f:selectItems value="#{itemDoacaoBean.campanhas}" var="campanha" itemLabel="#{campanha.nome}" itemValue="#{campanha}" />
+                    <p:ajax update="msgDoacaoMinima" />
+                </p:selectOneMenu>
+            </div>
+             <div class="row p-1">
+                <p:outputLabel class="col-2" value="Valor:"/>
+                <p:inputNumber class="col-4" required="true" decimalSeparator="," decimalPlaces="2" symbol="R$ " value="#{itemDoacaoBean.itemDoacao.valor}" />
+                <p:outputLabel id="msgDoacaoMinima" rendered="#{itemDoacaoBean.campanha != null}"  value="Doação mínima para a campanha #{itemDoacaoBean.campanha.nome} é de R$#{itemDoacaoBean.campanha.doacaoMinima}" >
+                    
+                </p:outputLabel>
+            </div>
+            <div class="row  justify-content-end col-6">
+                <p:commandButton class="col-4 " value="Confirmar Doação"  onclick="abrirboleto()"
+                                 actionListener="#{itemDoacaoBean.salvarDoacao()}"
+                                 />
+            </div>
         </h:form>
+        <script>
+        	function abrirBoleto(){
+        		var link = #{itemdoacao.linkBoleto1};
+        		window.open(link);
+        	}
+        </script>
     </ui:define>
 </ui:composition>

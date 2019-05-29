@@ -11,7 +11,7 @@
     </ui:define>
 
     <ui:define name="content">
-        
+
         <h:body>
             <h:form id="form">
 
@@ -28,7 +28,7 @@
 
                     <p:outputLabel>Total</p:outputLabel>
                     <p:inputText disabled="true" value="#{doacaoBean.entidade.total}" /> 
-                    
+
                     <br></br>                    
                     <p:button value="Doar" icon="pi pi-plus-circle" outcome="itemDoacao">
                         <f:param name="id" value="#{doacaoBean.entidade.id}" />
@@ -36,31 +36,33 @@
 
                 </p:panelGrid>
 
-
-
-
-
-                <p:dataGrid id="minhaTabela" var="item"
-                            value="#{doacaoBean.entidade.itemDoacaoList}" rows="10" paginator="true"
-                            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                            rowsPerPageTemplate="10,15,20">
+                <p:dataTable id="minhaTabela" var="item"
+                             value="#{doacaoBean.entidade.itemDoacaoList}" rows="10" paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="10,15,20">
                     <f:facet name="header">
                         Itens da Doação
                     </f:facet>
+
                     <p:column headerText="Cód.">
                         <h:outputText value="#{item.id}" />
                     </p:column>
+
                     <p:column headerText="Descrição.">
                         <h:outputText value="#{item.descricao}" />
                     </p:column>
+
                     <p:column headerText="Cód.">
-                        <h:outputText value="#{item.valor}" />
-                    </p:column>
-                    <p:column headerText="Ações">
-                        <h:outputText value="" />
+                        <h:outputText value="#{item.valor}" >
+                            <f:convertNumber type="currency" currencySymbol="R$"/>
+                        </h:outputText>
                     </p:column>
 
-                </p:dataGrid>
+                    <p:column headerText="Destino">
+                        <h:outputText value="#{item.campanha != null?item.campanha.nome : 'Doação para o Centro'}" />
+                    </p:column>
+
+                </p:dataTable>
             </h:form>
         </h:body>
     </ui:define>

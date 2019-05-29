@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <div class="card-header">Itens da Campanha</div>
+        <h1></h1>
+        <p:growl showDetail="true" showSummary="true" />
+        <p:messages id="mensagem"/>
+        <div class="card-body">
+            <p:panelGrid id="panelGrid" columns="2" layout="grid">
+                <h:outputText value="Campanha"/>
+                <h:outputText value="#{addItemCampanhaBean.campanha.id} - #{addItemCampanhaBean.campanha.nome}"/>
+
+                <h:outputText value="Nome: do Item"/>
+                <h:inputText value="#{addItemCampanhaBean.itemCampanha.nome}"/>
+            </p:panelGrid>
+        </div>
+    </ui:define>
+</ui:composition>

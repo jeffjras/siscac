@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <!--div class="ui-g">
+            <div class="ui-g-12"-->
+        <div class="card-body">
+            <h:form id="formGerencia">
+                <div class="card-header">Minhas Doações</div>
+                <h1></h1>
+
+                <p:messages id="mensagem" showDetail="true" showSummary="true"/>
+                <p:panelGrid id="panelGrid" columns="1" layout="grid"> 
+                    <p:row>
+                        <p:datePicker id="dataInicio" label="Data Início" value="#{minhasDoacesBean.dataInicio}" placeholder="Data Início" showIcon="true"></p:datePicker>
+                        <p:datePicker id="dataFim" value="#{minhasDoacesBean.dataFim}" showIcon="true" placeholder="Data Fim"/>
+                        <p:commandButton class="btn btn-primary" title="Pesquisar" action="#{minhasDoacesBean.pesquisarDoacoesEntreDatas()}" update="@form"/>
+                    </p:row>
+                </p:panelGrid>
+
+                <p:panelGrid id="panelGridDataTable" columns="1">
+                    <p:dataTable id="minhaTabela" var="item"
+                                 value="#{minhasDoacesBean.minhasDoacoes}" rows="10" paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="10,15,20">
+                        <f:facet name="header">
+                            Minhas Doações
+                        </f:facet>
+                        <p:column headerText="Cód.">
+                            <h:outputText value="#{item.id}" />
+                        </p:column>
+                        <p:column headerText="Data">
+                            <h:outputText value="#{item.cadastro}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Valor">
+                            <h:outputText value="#{item.total}">
+                            </h:outputText>
+                        </p:column>
+                    </p:dataTable>   
+                </p:panelGrid>
+            </h:form>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
