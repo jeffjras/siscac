@@ -41,9 +41,16 @@
                 </p:outputLabel>
             </div>
             <div class="row  justify-content-end col-6">
-                <p:commandButton class="col-4 " value="Confirmar Doação" 
-                                 actionListener="#{itemDoacaoBean.salvarDoacao()}"/>
+                <p:commandButton class="col-4 " value="Confirmar Doação"  onclick="abrirboleto()"
+                                 actionListener="#{itemDoacaoBean.salvarDoacao()}"
+                                 />
             </div>
         </h:form>
+        <script>
+        	function abrirBoleto(){
+        		var link = #{itemdoacao.linkBoleto1};
+        		window.open(link);
+        	}
+        </script>
     </ui:define>
 </ui:composition>

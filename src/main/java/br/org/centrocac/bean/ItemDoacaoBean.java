@@ -5,6 +5,12 @@
  */
 package br.org.centrocac.bean;
 
+import br.org.centrocac.boletofacilsdk.BoletoFacil;
+import br.org.centrocac.boletofacilsdk.enums.BoletoFacilEnvironment;
+import br.org.centrocac.boletofacilsdk.exceptions.BoletoFacilException;
+import br.org.centrocac.boletofacilsdk.model.entities.Charge;
+import br.org.centrocac.boletofacilsdk.model.entities.Payer;
+import br.org.centrocac.boletofacilsdk.model.response.ChargeResponse;
 import br.org.centrocac.entidade.Campanha;
 import br.org.centrocac.entidade.Doacao;
 import br.org.centrocac.entidade.ItemDoacao;
@@ -44,6 +50,14 @@ public class ItemDoacaoBean {
     private DoacaoRN doacaoRN = new DoacaoRN();
     private CampanhaRN campanhaRN = new CampanhaRN();
 
+    //BoletoFacil
+    private BoletoFacil boletoFacil;
+    private String linkBoleto1;
+    
+    String token = "35DE84C75A0579F0350F04342BE73A76A28376AAD9F8A7A390A8E4DFB6FCABC8";
+    
+    private String linkBoleto;
+    
     @PostConstruct
     public void init() {
         doacao = doacaoRN.obter(Integer.parseInt(idDoacao));
@@ -78,6 +92,42 @@ public class ItemDoacaoBean {
         if (campanha != null) {
             if (itemDoacao.getValor().doubleValue() >= campanha.getDoacaoMinima().doubleValue()) {
                 if (doacaoRN.salvar(doacao)) {
+                	
+                	boletoFacil = new BoletoFacil(BoletoFacilEnvironment.SANDBOX, token);				
+                	Payer payer = new Payer();
+            		payer.setName(doacao.getColaborador().getNome());
+            		payer.setCpfCnpj(doacao.getColaborador().getCpfOuCnpj());
+
+            		Charge charge = new Charge();
+            		charge.setDescription("Boleto de Doação ao CAC");
+            			//	+ " "+itemDoacao.getCampanha().getNome() +" Com a descriçao: "+itemDoacao.getDescricao()+" em: "+ new Date(System.currentTimeMillis()));
+            		charge.setAmount(itemDoacao.getValor());
+            		charge.setPayer(payer);
+            		charge.setPaymentTypes("BOLETO,CREDIT_CARD");
+
+            		try {
+            			ChargeResponse response = boletoFacil.issueCharge(charge);			
+            			if (response.isSuccess()) {
+            				for (Charge c : response.getData().getCharges()) {
+            					System.out.println("");
+            					System.out.println(c);    					
+            					setLinkBoleto(c.getCheckoutUrl()); //getLink();
+            					System.out.println(getLinkBoleto());
+            				}
+            			}			
+            		} catch (BoletoFacilException e) {
+            			System.out.println(e.getMessage());
+            		} catch (Exception e) {
+            			e.printStackTrace();
+            		}
+            		UtilBean.criarMensagemDeInformacao("Doação salva com sucesso!");
+            		linkBoleto1 = getLinkBoleto();
+            		UtilBean.criarMensagemDeAviso("Pagamento disponivel em: ",getLinkBoleto()); //getLinkBoleto()
+            		
+//            		FacesContext.getCurrentInstance().getExternalContext().redirect(getLinkBoleto());
+	
+                	
+                	
                     UtilBean.criarMensagemDeInformacao("Doação salva com sucesso!");
                     FacesContext.getCurrentInstance().getExternalContext().redirect("../usuario/doacao.xhtml");
                 } else {
@@ -88,6 +138,41 @@ public class ItemDoacaoBean {
             }
         } else {
             if (doacaoRN.salvar(doacao)) {
+            	boletoFacil = new BoletoFacil(BoletoFacilEnvironment.SANDBOX, token);				
+            	Payer payer = new Payer();
+        		payer.setName(doacao.getColaborador().getNome());
+        		payer.setCpfCnpj(doacao.getColaborador().getCpfOuCnpj());
+
+        		Charge charge = new Charge();
+        		charge.setDescription("Boleto de Doação ao CAC");
+        			//	+ " "+itemDoacao.getCampanha().getNome() +" Com a descriçao: "+itemDoacao.getDescricao()+" em: "+ new Date(System.currentTimeMillis()));
+        		charge.setAmount(itemDoacao.getValor());
+        		charge.setPayer(payer);
+        		charge.setPaymentTypes("BOLETO,CREDIT_CARD");
+
+        		try {
+        			ChargeResponse response = boletoFacil.issueCharge(charge);			
+        			if (response.isSuccess()) {
+        				for (Charge c : response.getData().getCharges()) {
+        					System.out.println("");
+        					System.out.println(c);    					
+        					setLinkBoleto(c.getCheckoutUrl()); //getLink();
+        					System.out.println(getLinkBoleto());
+        				}
+        			}			
+        		} catch (BoletoFacilException e) {
+        			System.out.println(e.getMessage());
+        		} catch (Exception e) {
+        			e.printStackTrace();
+        		}
+        		UtilBean.criarMensagemDeInformacao("Doação salva com sucesso!");
+        		System.out.println("link " + getLinkBoleto());
+        		linkBoleto1 = getLinkBoleto();
+        		UtilBean.criarMensagemDeAviso("Pagamento disponivel em: ",getLinkBoleto()); //getLinkBoleto()
+        		
+//        		FacesContext.getCurrentInstance().getExternalContext().redirect(getLinkBoleto());
+
+            	
                 UtilBean.criarMensagemDeInformacao("Doação salva com sucesso!");
                 FacesContext.getCurrentInstance().getExternalContext().redirect("../usuario/doacao.xhtml");
             } else {
@@ -133,4 +218,20 @@ public class ItemDoacaoBean {
         this.campanha = campanha;
     }
 
+    public String getLinkBoleto() {
+		return linkBoleto;
+	}
+
+	public void setLinkBoleto(String linkBoleto) {
+		this.linkBoleto = linkBoleto;
+	}
+
+	public String getLinkBoleto1() {
+		return linkBoleto1;
+	}
+
+	public void setLinkBoleto1(String linkBoleto1) {
+		this.linkBoleto1 = linkBoleto1;
+	}
+	
 }
