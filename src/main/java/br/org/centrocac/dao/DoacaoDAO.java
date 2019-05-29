@@ -95,4 +95,35 @@ public class DoacaoDAO extends GenericDAO<Doacao> {
         }
         return d;
     }
+
+    public List<Doacao> obterDoacoesPorColaborador(Colaborador colaborador) {
+        EntityManager em = getEntityManager();
+        Query query = em.createQuery("select d from Doacao d where d.colaborador = :colaborador ");
+        List<Doacao> resposta = new ArrayList();
+        try {
+            resposta = query.setParameter("colaborador", colaborador)
+                    .getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        } finally {
+            em.close();
+        }
+        return resposta;
+    }
+
+    public List<Doacao> obterDoacoesEntreDatas(Date dataInicio, Date dataFim) {
+        EntityManager em = getEntityManager();
+        Query query = em.createQuery("select d from Doacao d where d.cadastro >= :dataInicio and d.cadastro <= :dataFim  ");
+        List<Doacao> resposta = new ArrayList();
+        try {
+            resposta = query.setParameter("dataInicio", dataInicio, TemporalType.DATE).
+                    setParameter("dataFim", dataFim, TemporalType.DATE)
+                    .getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        } finally {
+            em.close();
+        }
+        return resposta;
+    }
 }

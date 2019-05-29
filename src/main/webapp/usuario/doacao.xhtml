@@ -58,8 +58,8 @@
                         </h:outputText>
                     </p:column>
 
-                    <p:column headerText="Ações">
-                        <h:outputText value="" />
+                    <p:column headerText="Destino">
+                        <h:outputText value="#{item.campanha != null?item.campanha.nome : 'Doação para o Centro'}" />
                     </p:column>
 
                 </p:dataTable>

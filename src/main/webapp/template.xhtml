@@ -35,8 +35,8 @@
                         #{colaboradorBean.usuarioLogado.nome}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" >
-                        <a class="dropdown-item" href="#"><center>#{colaboradorBean.usuarioLogado.email}</center></a>
-                        <a class="dropdown-item" href="#"><center>#{colaboradorBean.perfilDoUsuarioLogado}</center></a>
+                        <a class="dropdown-item text-center" href="#"><center>#{colaboradorBean.usuarioLogado.email}</center></a>
+                        <a class="dropdown-item text-center" href="#"><center>#{colaboradorBean.perfilDoUsuarioLogado}</center></a>
                         <div class="dropdown-item">
                             <h:form onsubmit="return deletaConfirma();">
                                 <h:inputHidden id="id" value="#{colaboradorBean.colaborador.id}" />

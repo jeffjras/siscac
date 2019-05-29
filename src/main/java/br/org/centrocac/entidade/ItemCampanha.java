@@ -7,7 +7,6 @@ package br.org.centrocac.entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,16 +17,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author BPMLAB-02
+ * @author ANDRE
  */
 @Entity
 @Table(name = "item_campanha")
@@ -36,7 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "ItemCampanha.findAll", query = "SELECT i FROM ItemCampanha i")
     , @NamedQuery(name = "ItemCampanha.findById", query = "SELECT i FROM ItemCampanha i WHERE i.id = :id")
     , @NamedQuery(name = "ItemCampanha.findByNome", query = "SELECT i FROM ItemCampanha i WHERE i.nome = :nome")
-    , @NamedQuery(name = "ItemCampanha.findByValor", query = "SELECT i FROM ItemCampanha i WHERE i.valor = :valor")})
+    , @NamedQuery(name = "ItemCampanha.findByValor", query = "SELECT i FROM ItemCampanha i WHERE i.valor = :valor")
+    , @NamedQuery(name = "ItemCampanha.findByQtde", query = "SELECT i FROM ItemCampanha i WHERE i.qtde = :qtde")})
 public class ItemCampanha implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,12 +49,10 @@ public class ItemCampanha implements Serializable {
     @Column(name = "nome")
     private String nome;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "valor")
     private BigDecimal valor;
-    @OneToMany(mappedBy = "itemCampanha")
-    private List<ItemDoacao> itemDoacaoList;
+    @Column(name = "qtde")
+    private Integer qtde;
     @JoinColumn(name = "campanha", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Campanha campanha;
@@ -68,10 +64,9 @@ public class ItemCampanha implements Serializable {
         this.id = id;
     }
 
-    public ItemCampanha(Integer id, String nome, BigDecimal valor) {
+    public ItemCampanha(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.valor = valor;
     }
 
     public Integer getId() {
@@ -98,13 +93,12 @@ public class ItemCampanha implements Serializable {
         this.valor = valor;
     }
 
-    @XmlTransient
-    public List<ItemDoacao> getItemDoacaoList() {
-        return itemDoacaoList;
+    public Integer getQtde() {
+        return qtde;
     }
 
-    public void setItemDoacaoList(List<ItemDoacao> itemDoacaoList) {
-        this.itemDoacaoList = itemDoacaoList;
+    public void setQtde(Integer qtde) {
+        this.qtde = qtde;
     }
 
     public Campanha getCampanha() {
