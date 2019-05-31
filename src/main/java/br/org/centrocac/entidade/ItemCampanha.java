@@ -7,6 +7,7 @@ package br.org.centrocac.entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,10 +18,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,6 +39,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "ItemCampanha.findByValor", query = "SELECT i FROM ItemCampanha i WHERE i.valor = :valor")
     , @NamedQuery(name = "ItemCampanha.findByQtde", query = "SELECT i FROM ItemCampanha i WHERE i.qtde = :qtde")})
 public class ItemCampanha implements Serializable {
+
+    @OneToMany(mappedBy = "itemCampanha")
+    private List<ItemDoacao> itemDoacaoList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -132,6 +138,15 @@ public class ItemCampanha implements Serializable {
     @Override
     public String toString() {
         return "br.org.centrocac.entidade.ItemCampanha[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public List<ItemDoacao> getItemDoacaoList() {
+        return itemDoacaoList;
+    }
+
+    public void setItemDoacaoList(List<ItemDoacao> itemDoacaoList) {
+        this.itemDoacaoList = itemDoacaoList;
     }
     
 }

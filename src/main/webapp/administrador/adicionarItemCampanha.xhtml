@@ -13,13 +13,19 @@
         <p:growl showDetail="true" showSummary="true" />
         <p:messages id="mensagem"/>
         <div class="card-body">
-            <p:panelGrid id="panelGrid" columns="2" layout="grid">
-                <h:outputText value="Campanha"/>
-                <h:outputText value="#{addItemCampanhaBean.campanha.id} - #{addItemCampanhaBean.campanha.nome}"/>
+            <h:form>
+                <p:panelGrid id="panelGrid" columns="2" columnClasses="col-3, col" layout="grid">
+                    <h:outputText value="Campanha"/>
+                    <h:outputText value="#{addItemCampanhaBean.campanha.id} - #{addItemCampanhaBean.campanha.nome}"/>
 
-                <h:outputText value="Nome: do Item"/>
-                <h:inputText value="#{addItemCampanhaBean.itemCampanha.nome}"/>
-            </p:panelGrid>
+                    <h:outputText value="Nome do Item:"/>
+                    <h:inputText value="#{addItemCampanhaBean.itemCampanha.nome}"/>
+
+                    <p:commandButton  action="#{addItemCampanhaBean.salvarItemCampanha()}"  value="Salvar">
+                        <f:param name="id" value="#{addItemCampanhaBean.campanha.id}"/>
+                    </p:commandButton>
+                </p:panelGrid>
+            </h:form>
         </div>
     </ui:define>
 </ui:composition>

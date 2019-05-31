@@ -36,6 +36,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "ItemDoacao.findByValor", query = "SELECT i FROM ItemDoacao i WHERE i.valor = :valor")})
 public class ItemDoacao implements Serializable {
 
+    @Column(name = "qtde")
+    private Integer qtde;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -148,6 +151,14 @@ public class ItemDoacao implements Serializable {
     @Override
     public String toString() {
         return "br.org.centrocac.entidade.ItemDoacao[ id=" + id + " ]";
+    }
+
+    public Integer getQtde() {
+        return qtde;
+    }
+
+    public void setQtde(Integer qtde) {
+        this.qtde = qtde;
     }
     
 }
