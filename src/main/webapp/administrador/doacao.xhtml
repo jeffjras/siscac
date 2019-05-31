@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">
+        Doação
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:body>
+            <h:form id="form">
+                <p:messages showDetail="true" />
+
+                <p:panelGrid id="painelDoacao" columns="2">
+                    <p:outputLabel>Dia</p:outputLabel>
+                    <p:datePicker showIcon="true" value="#{doacaoAdminiBean.entidade.cadastro}" />
+
+                    <p:outputLabel>Doador</p:outputLabel>
+                    <p:column>
+                        <p:inputText id="colaborador" disabled="true" value="#{doacaoAdminiBean.entidade.colaborador.nome}" />
+                        <p:commandButton icon="pi pi-search"  onclick="PF('dlg3').show();" />                            
+                    </p:column>                    
+
+                    <p:outputLabel>Total</p:outputLabel>
+                    <p:inputText disabled="true" value="#{doacaoAdminiBean.entidade.total}" /> 
+
+                    <br></br>  
+                    <p:commandButton value="Doar" icon="pi pi-plus-circle" 
+                                     action="#{doacaoAdminiBean.salvar()}"/>
+                    
+
+                </p:panelGrid>
+
+                <p:dataTable id="minhaTabela" var="item"
+                             value="#{doacaoAdminiBean.entidade.itemDoacaoList}" rows="10" paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="10,15,20">
+                    <f:facet name="header">
+                        Itens da Doação
+                    </f:facet>
+
+                    <p:column headerText="Cód.">
+                        <h:outputText value="#{item.id}" />
+                    </p:column>
+
+                    <p:column headerText="Descrição.">
+                        <h:outputText value="#{item.descricao}" />
+                    </p:column>
+
+                    <p:column headerText="Cód.">
+                        <h:outputText value="#{item.valor}" >
+                            <f:convertNumber type="currency" currencySymbol="R$"/>
+                        </h:outputText>
+                    </p:column>
+                    
+                    <p:column headerText="Item">
+                        <h:outputText value="#{item.itemCampanha != null?item.itemCampanha.nome : '-'}" >
+                            
+                        </h:outputText>
+                    </p:column>
+                    
+                    <p:column headerText="Qtde.">
+                        <h:outputText value="#{item.qtde != null?item.qtde : '-'}" >
+                            
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Destino">
+                        <h:outputText value="#{item.campanha != null?item.campanha.nome : 'Doação para o Centro'}" />
+                    </p:column>
+                </p:dataTable>
+                
+                <p:dialog id="dialog1" header="Selecionar Colaborador"  widgetVar="dlg3" modal="true" height="">
+                        <p:dataTable id="minhaTabela1" var="itemc"  
+                                     value="#{doacaoAdminiBean.listarColaboradores()}" rows="10" paginator="true"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="10,15,20">
+                            <p:column headerText="Cód.">
+                                <h:outputText value="#{itemc.id}"/>
+                            </p:column>
+
+                            <p:column headerText="Nome:">
+                                <h:outputText value="#{itemc.nome}"/>
+                            </p:column>   
+
+                            <p:column headerText="Nome:">
+                                <p:commandButton actionListener="#{doacaoAdminiBean.setarColaborador(itemc.id)}" 
+                                                 icon="pi pi-check"  onclick="PF('dlg3').hide()"
+                                                 update=":form:colaborador"/>
+                            </p:column>   
+                        </p:dataTable>
+                    </p:dialog>
+
+
+                <h:form id="form3">
+                    
+                </h:form>
+            </h:form>
+        </h:body>
+    </ui:define>
+</ui:composition>

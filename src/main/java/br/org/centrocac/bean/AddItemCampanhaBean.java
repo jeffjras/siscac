@@ -8,6 +8,7 @@ package br.org.centrocac.bean;
 import br.org.centrocac.entidade.Campanha;
 import br.org.centrocac.entidade.ItemCampanha;
 import br.org.centrocac.rn.CampanhaRN;
+import br.org.centrocac.util.UtilBean;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,21 +40,25 @@ public class AddItemCampanhaBean {
     @PostConstruct
     public void init(){
         this.buscarCampanha();
+        itemCampanha.setCampanha(campanha);
     }
     
     private void buscarCampanha(){
         campanha = campanhaRN.obter(Integer.parseInt(idCampanha));
     }
     
-    public void salvarItemCampanha() throws IOException{
+    public String salvarItemCampanha() throws IOException{
         itensCampanha = campanha.getItemCampanhaList();
         itensCampanha.add(itemCampanha);
         campanha.setItemCampanhaList(itensCampanha);
         
-        if(campanhaRN.salvar(campanha)){
-            FacesContext.getCurrentInstance().getExternalContext().redirect("../administrador/itemCampanha.xhtml");
+        if(campanhaRN.salvar(campanha)){            
+            UtilBean.criarMensagemDeInformacao("Item salvo com sucesso!");
+            
+        } else {
+            UtilBean.criarMensagemDeAviso("Erro ao salvar!");
         }
-        
+        return "itemCampanha.xhtml?id="+campanha.getId()+"faces-redirect=true";
     }
 
     public Campanha getCampanha() {

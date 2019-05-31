@@ -27,22 +27,24 @@ public class ItemCampanhaBean {
     private String idCampanha = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
     
     //entidade
-    private Campanha campanha;
+    private Campanha campanha = new Campanha();
     
     //RN
-    private CampanhaRN campanhaRN;
+    private CampanhaRN campanhaRN = new CampanhaRN();
     
     //List
     private List<ItemCampanha> itensCampanha = new ArrayList();
     
     @PostConstruct
     public void init(){
+        System.out.println("init bean item campanha");
         this.obterCampanha();
         
     }
     
-    private void obterCampanha(){
+    public void obterCampanha(){
         campanha = campanhaRN.obter(Integer.parseInt(idCampanha));
+        
     }
     
     public List<ItemCampanha> listarTodos(){

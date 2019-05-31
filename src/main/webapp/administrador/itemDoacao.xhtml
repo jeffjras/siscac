@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        Item da Doação
+    </ui:define>
+    <ui:define name="content">
+        <h:form id="form">
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+            <f:metadata>
+                <f:viewParam name="id" value="#{itemDoacaoAdminBean.idDoacao}" />
+            </f:metadata>
+
+            <div class="row p-1">
+                <p:outputLabel class=" col-2" value="Descrição:"/>
+                <p:inputText class="col-4" readonly="false" size="80" value="#{itemDoacaoAdminBean.itemDoacao.descricao}"></p:inputText>
+            </div>  
+            <div class="row p-1">
+                <p:outputLabel class="col-2" for="campanha" value="Campanha:" />
+                <p:selectOneMenu class="col-4" id="campanha"
+                                 value="#{itemDoacaoAdminBean.campanha}" converter="convCampanha" 
+                                 panelStyle="width:180px" effect="fade" style="width:160px" >
+                    <f:selectItem itemLabel="Doar para o Centro" itemValue="#{null}" />
+                    <f:selectItems value="#{itemDoacaoAdminBean.campanhas}"  var="campanha" itemLabel="#{campanha.nome}" itemValue="#{campanha}" />
+                    <p:ajax update=":form:itemCampanha" />
+                </p:selectOneMenu>
+            </div>
+            <div id="itemCampanha" class="row p-1">
+                <p:outputLabel class="col-2" for="itemCampanha" value="Item da Campanha:" />
+                <p:selectOneMenu class="col-4" id="itemCampanha"
+                                 value="#{itemDoacaoAdminBean.campanha.itemCampanhaList}" converter="convCampanha" 
+                                 panelStyle="width:180px" effect="fade" style="width:160px" >
+                    <f:selectItem itemLabel="Sem Item" itemValue="#{null}" />
+                    <f:selectItems value="#{itemDoacaoAdminBean.campanha.itemCampanhaList}" var="itemCampanha" itemLabel="#{itemCampanha.nome}" itemValue="#{itemCampanha}" />
+                    
+                </p:selectOneMenu>
+                
+                <p:outputLabel class="col-2" value="Quantidade:"/>
+                <p:inputText id="qtde" class="col-4" value="#{itemDoacaoAdminBean.itemDoacao.qtde}" />               
+                   
+            </div>
+             <div class="row p-1">
+                <p:outputLabel class="col-2" value="Valor:"/>
+                <p:inputNumber class="col-4" required="" decimalSeparator="," decimalPlaces="2" symbol="R$ " value="#{itemDoacaoAdminBean.itemDoacao.valor}" />
+                <p:outputLabel id="msgDoacaoMinima" rendered="#{itemDoacaoAdminBean.campanha != null}"  value="Doação mínima para a campanha #{itemDoacaoAdminBean.campanha.nome} é de R$#{itemDoacaoAdminBean.campanha.doacaoMinima}" >
+                    
+                </p:outputLabel>
+            </div>
+            <div id="qtde" class="row p-1">
+                 
+            </div>
+            
+            <div class="row  justify-content-end col-6">
+                <p:commandButton class="col-4 " value="Confirmar Doação"  onclick="abrirboleto()"
+                                 actionListener="#{itemDoacaoAdminBean.salvarDoacao()}"
+                                 />
+            </div>
+        </h:form>
+        <script>
+        	function abrirBoleto(){
+        		var link = #{itemdoacao.linkBoleto1};
+        		window.open(link);
+        	}
+        </script>
+    </ui:define>
+</ui:composition>

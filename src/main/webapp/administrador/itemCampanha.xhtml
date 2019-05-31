@@ -14,7 +14,7 @@
             <p:growl showDetail="true" showSummary="true" />
             <p:messages id="mensagem"/>
 
-            <p:panelGrid id="panelGrid" columns="2" layout="grid">
+            <p:panelGrid id="panelGrid" columns="2" columnClasses="col-2, col" layout="grid">
                 <h:outputText value="Cód."/>
                 <h:outputText value="#{itemCampanhaBean.campanha.id}"/>
                 
@@ -29,9 +29,10 @@
                     <f:convertDateTime pattern="dd/MM/yyyy"/>
                 </h:outputText>
                 
+                <p:button value="voltar" outcome="listarCampanha" icon="" class="btn btn-primary" />                
                 <p:button value="Item" icon="pi pi-plus" class="btn btn-primary" 
                           outcome="adicionarItemCampanha">
-                    <f:param name="id" id="#{itemCampanhaBean.campanha.id}"/>
+                    <f:param name="id" value="#{itemCampanhaBean.campanha.id}"/>
                 </p:button>
 
             </p:panelGrid>
@@ -44,14 +45,11 @@
                     <f:facet name="header">
                         Itens da Campanha
                     </f:facet>
-                    <p:column headerText="Cód.">
+                    <p:column headerText="Cód." >
                         <h:outputText value="#{item.id}" />
                     </p:column>
                     <p:column headerText="Nome">
                         <h:outputText value="#{item.nome}" />
-                    </p:column>
-                    <p:column headerText="Qtde.">
-                        <h:outputText value="#{item.arrecadado}" />
                     </p:column>
                 </p:dataTable>   
             </p:panelGrid>

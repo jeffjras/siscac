@@ -12,13 +12,13 @@
             <div class="ui-g-12"-->
         <div class="card-body">
             <h:form id="formGerencia">
-                <div class="card-header">Minhas Doações</div>
+                <div class="card-header">Doações</div>
                 <h1></h1>
                 <p:growl showDetail="true" showSummary="true" />
                 <p:messages id="mensagem"/>
 
                 <p:panelGrid id="panelGrid" columns="1" layout="grid">
-                    <p:button outcome="/usuario/doacao.xhtml" value="Nova Doação"/>
+                    <p:button outcome="/administrador/doacao.xhtml" value="Nova Doação"/>
                     <ui:remove>
                         <p:row>
                             <p:datePicker id="dataInicio" value="" showIcon="true"/>
@@ -33,7 +33,7 @@
 
                 <p:panelGrid id="panelGridDataTable" columns="1">
                     <p:dataTable id="minhaTabela" var="item"
-                                 value="#{doacaoGerenciamentoBean.doacoes}" rows="10" paginator="true"
+                                 value="#{doacaoAdminGerenciamentoBean.doacoes}" rows="10" paginator="true"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  rowsPerPageTemplate="10,15,20">
                         <f:facet name="header">
@@ -47,11 +47,15 @@
                                 <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </p:column>
+                        <p:column headerText="Doador">
+                            <h:outputText value="#{item.colaborador.nome}">
+                            </h:outputText>
+                        </p:column>
                         <p:column headerText="Total Doado">
                             <h:outputText value="#{item.total}"/>
                         </p:column>
                         <p:column >
-                            <p:commandButton value="Itens Doados" actionListener="#{doacaoGerenciamentoBean.setIdDoacao(item.id)}"
+                            <p:commandButton value="Itens Doados" actionListener="#{doacaoAdminGerenciamentoBean.setIdDoacao(item.id)}"
                                               oncomplete="PF('dlg2').show();"
                                              update=":form2:dialog"/>
                         </p:column>
@@ -63,7 +67,7 @@
             <h:form id="form2">
                 <p:dialog id="dialog" header="Itens Doados"  widgetVar="dlg2" modal="true" height="">
                     <p:dataTable id="minhaTabela" var="item" 
-                                 value="#{doacaoGerenciamentoBean.itensDoacaoLista()}" rows="10" paginator="true"
+                                 value="#{doacaoAdminGerenciamentoBean.itensDoacaoLista()}" rows="10" paginator="true"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  rowsPerPageTemplate="10,15,20">
                         <p:column headerText="Cód.">
