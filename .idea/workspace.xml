@@ -1,73 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c9f5acd-5151-47cb-9071-938664bdb306" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/AddItemCampanhaBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/ItemCampanhaBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/MinhasDoacesBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/converter/CampanhaConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/BoletoFacil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/BoletoFacilBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/enums/BoletoFacilEnvironment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/enums/RequestType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/enums/ResponseType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/exceptions/BoletoFacilException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/exceptions/BoletoFacilInvalidEntityException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/exceptions/BoletoFacilMethodNotAllowedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/exceptions/BoletoFacilRequestException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/exceptions/BoletoFacilTokenException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/CalendarDeserializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/ModelBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/BankAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/BaseEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/BilletDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/Charge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/ChargeList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/CreditCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/Discount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/FeeSchema.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/Payee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/PayeeBalance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/Payer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/Payment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/Split.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/Transfer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/enums/BankAccountType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/enums/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/enums/CompanyType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/enums/PaymentStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/entities/enums/PaymentType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/request/BaseRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/request/ListChargesDates.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/response/BaseResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/response/CancelChargeResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/response/ChargeResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/response/ErrorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/response/FeeSchemaResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/response/FetchBalanceResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/response/ListChargesResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/response/PayeeResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/boletofacilsdk/model/response/TransferResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/boletofacilsdk.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/administrador/adicionarItemCampanha.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/administrador/itemCampanha.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/usuario/minhasDoacoes.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/ItemDoacaoBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/ItemDoacaoBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/ListaCampanhaBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/ListaCampanhaBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/dao/DoacaoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/dao/DoacaoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/Doacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/Doacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/ItemCampanha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/ItemCampanha.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/ItemDoacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/ItemDoacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/rn/DoacaoRN.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/rn/DoacaoRN.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/administrador/listarCampanha.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/administrador/listarCampanha.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/template.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/template.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/usuario/doacao.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usuario/doacao.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/usuario/itemDoacao.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usuario/itemDoacao.xhtml" afterDir="false" />
-    </list>
+    <list default="true" id="5c9f5acd-5151-47cb-9071-938664bdb306" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -92,9 +26,7 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-121" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -208,9 +140,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -275,20 +207,26 @@
       <option name="project" value="LOCAL" />
       <updated>1559143314714</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge branch 'dev' of https://github.com/jeffjras/siscac into dev&#10;&#10;# Conflicts:&#10;#&#9;pom.xml">
+      <created>1559150178586</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1559150178586</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="25" width="1317" height="743" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2934697" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29819041" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -298,7 +236,8 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50039905" side_tool="true" weight="0.32736155" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="9" sideWeight="0.49960095" visible="true" weight="0.32736155" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49960095" visible="true" weight="0.32736155" />
+      <window_info anchor="bottom" id="Messages" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -315,7 +254,8 @@
     <MESSAGE value="campanha funcionalidades" />
     <MESSAGE value="integração com jasper." />
     <MESSAGE value="configurações do eclipse" />
-    <option name="LAST_COMMIT_MESSAGE" value="configurações do eclipse" />
+    <MESSAGE value="Merge branch 'dev' of https://github.com/jeffjras/siscac into dev&#10;&#10;# Conflicts:&#10;#&#9;pom.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'dev' of https://github.com/jeffjras/siscac into dev&#10;&#10;# Conflicts:&#10;#&#9;pom.xml" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/ColaboradorBean.java">
@@ -342,17 +282,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-121" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
           <caret line="195" column="21" selection-start-line="195" selection-start-column="21" selection-end-line="195" selection-end-column="21" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">

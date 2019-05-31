@@ -69,7 +69,7 @@ public class AcaoDAO extends GenericDAO<Acao> {
     
     public List<Acao> obterTodosAcoesDisponiveisParaCampanha(Integer campanhaId) {
         EntityManager em = getEntityManager();
-        String sql = "SELECT * FROM acao a INNER JOIN campanha_acao ca on ca.acao_id = a.id where ca.campanha_id = ?";
+        String sql = "SELECT  *  FROM  acao a  left JOIN  campanha_acao ca on ca.acao_id = a.id where a.id not in (SELECT ac.id FROM acao ac Inner join campanha_acao ca on ca.acao_id = ac.id where ca.campanha_id = ?)";
         Query query = em.createNativeQuery(sql, Acao.class);
         query.setParameter(1, campanhaId);
         List<Acao> resposta = null;

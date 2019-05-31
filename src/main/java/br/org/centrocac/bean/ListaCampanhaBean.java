@@ -85,6 +85,11 @@ public class ListaCampanhaBean implements Serializable {
 
     }
 
+    public String goToVincularCampanha(Campanha c) {
+        UtilBean.naSessao("id", c.getId());
+        return "vincularCampanhaAAcao.xhtml?faces-redirect=true";
+    }
+    
     public List<Campanha> getCampanhas() {
         return campanhas;
     }
