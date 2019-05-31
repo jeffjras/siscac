@@ -59,7 +59,7 @@
         </header>
 
         <div class="container-fluid">
-            <div class="row flex-xl-nowrap h-100" style="">
+            <div class="row flex-xl-nowrap " style="min-height: 100vh;">
                 <div class="col-12 col-md-3 col-xl-2 bd-sidebar flex-column " style="background-color: #494e53; padding-left: 0; padding-right: 0;">
                     <nav id="bd-menu-nav" class="bd-links collapse show">
                         <button class="navbar-toggler d-xs-block d-sm-block d-md-none d-lg-none d-xl-none right" style="color: snow;" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -202,20 +202,37 @@
 
 
         <!-- footer -->
-        <footer class="col-md-12" style="position: fixed; left: 0; bottom: 0; background-color: lightsteelblue;" >
+        <nav class="navbar navbar-light " style="background-color: lightsteelblue;">
             <div class="ui-g-12 layout-footer">
-                <div class="ui-g-12 ui-md-6 footer-left">
-                    <span class="footer-info-left "><a href="#">UFPA</a> - Universidade Federal
-                        do Pará</span>
+                    <div class="ui-g-12 ui-md-6 footer-left">
+                        <span class="footer-info-left "><a href="#">UFPA</a> - Universidade Federal
+                            do Pará</span>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 footer-right">
+                        <span class="footer-info-right"><a href="#">PASR</a> - Projeto de
+                            Arquitetura de Software para Reutilização, Projeto <a href="#">Donazione</a> ©
+                            <script>document.write(new Date().getFullYear())</script>
+                        </span>
+                    </div>
                 </div>
-                <div class="ui-g-12 ui-md-6 footer-right">
-                    <span class="footer-info-right"><a href="#">PASR</a> - Projeto de
-                        Arquitetura de Software para Reutilização, Projeto <a href="#">Donazione</a> ©
-                        <script>document.write(new Date().getFullYear())</script>
-                    </span>
+        </nav>
+        <ui:remove>
+            <footer class="col-md-12" style="position: fixed; left: 0; bottom: 0; background-color: lightsteelblue;" >
+                <div class="ui-g-12 layout-footer">
+                    <div class="ui-g-12 ui-md-6 footer-left">
+                        <span class="footer-info-left "><a href="#">UFPA</a> - Universidade Federal
+                            do Pará</span>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 footer-right">
+                        <span class="footer-info-right"><a href="#">PASR</a> - Projeto de
+                            Arquitetura de Software para Reutilização, Projeto <a href="#">Donazione</a> ©
+                            <script>document.write(new Date().getFullYear())</script>
+                        </span>
+                    </div>
                 </div>
-            </div>
-        </footer><!-- /#container fluid-->
+            </footer>
+        </ui:remove>
+        <!-- /#container fluid-->
 
 
 
