@@ -20,20 +20,40 @@
                     <f:selectItem itemLabel="-- Selecione --" itemValue="#{null}"/>
                     <f:selectItems value="#{acaoBean.entidadeList}" var="entidade"
                                    itemValue="#{entidade}" itemLabel="#{entidade.nome}"/>
+                    <p:ajax event="change" update=":formGerencia" listener="#{voluntarioPorAcaoBean.filtrarPorAcao()}"/>
+
                 </p:selectOneMenu>
+            </p:panelGrid>
 
-                <p:commandButton value="Pesquisar" actionListener="#{voluntarioPorAcaoBean.filtrarPorAcao()}" 
-                                 update=":formGerencia:panelGridDataTable">
-                </p:commandButton>
+            <p:panel id="panel" header="Ação selecionada" style="margin-bottom:20px" rendered="#{!empty voluntarioPorAcaoBean.entidade}">
+                <h:panelGrid id="painelGrid-1" columns="2">
+                    <p:outputLabel for="nome" value="Nome" />
+                    <p:inputText id="nome" value="#{voluntarioPorAcaoBean.entidade.nome}"  disabled="true"/>
 
-                <p:commandButton value="baixar pdf" 
+                    <p:outputLabel for="descricao" value="Descrição" />
+                    <p:inputText id="descricao" value="#{voluntarioPorAcaoBean.entidade.descricao}"  disabled="true"/>
+
+                    <p:outputLabel for="inicio" value="Data Inicio" />
+                    <p:inputText id="inicio" value="#{voluntarioPorAcaoBean.entidade.inicio}"  disabled="true">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </p:inputText>
+
+                    <p:outputLabel for="fim" value="Data Fim" />
+                    <p:inputText id="fim" value="#{voluntarioPorAcaoBean.entidade.fim}"  disabled="true">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </p:inputText>
+                </h:panelGrid>
+            </p:panel>
+
+            <p:panelGrid id="panelGridRelatorio" columns="1">
+                <p:commandButton value="baixar pdf (TODO)" 
+                                 disabled="#{empty voluntarioPorAcaoBean.entidadeList}"
                                  action="#{voluntarioPorAcaoBean.gerarPdf()}" 
                                  ajax="false"
                                  onclick="this.form.target = '_blank'"
                                  />
-                
             </p:panelGrid>
-
+                
             <p:panelGrid id="panelGridDataTable" columns="1">
                 <p:dataTable var="entidade" value="#{voluntarioPorAcaoBean.entidadeList}">
                     <f:facet name="header">
