@@ -3,15 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5c9f5acd-5151-47cb-9071-938664bdb306" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/AddItemCampanhaBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/AddItemCampanhaBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/DoacaoAdminGerenciamentoBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/DoacaoAdminGerenciamentoBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/DoacaoGerenciamentoBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/DoacaoGerenciamentoBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/ItemCampanhaBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/ItemCampanhaBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/ItemDoacaoAdminBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/ItemDoacaoAdminBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/ItemCampanha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/org/centrocac/entidade/ItemCampanha.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/administrador/listarAcaoBackup.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/administrador/listarAcaoBackup.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/administrador/listarAcaoPorVoluntarioBackup.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/administrador/listarAcaoPorVoluntarioBackup.xhtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/administrador/listarVoluntariosPorAcaoBackup.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/administrador/listarVoluntariosPorAcaoBackup.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/template.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/template.xhtml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -30,7 +26,7 @@
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="148">
-              <caret line="195" column="21" selection-start-line="195" selection-start-column="21" selection-end-line="195" selection-end-column="21" />
+              <caret line="208" column="21" selection-start-line="208" selection-start-column="21" selection-end-line="208" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -232,8 +228,24 @@
       <option name="project" value="LOCAL" />
       <updated>1559313371130</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="merge com andré">
+      <created>1559314676171</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1559314676171</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="25" width="1317" height="743" extended-state="6" />
@@ -251,10 +263,10 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" visible="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50039905" side_tool="true" weight="0.32736155" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49960095" visible="true" weight="0.32736155" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5011802" side_tool="true" weight="0.32736155" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49881983" weight="0.32736155" />
       <window_info anchor="bottom" id="Messages" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -274,7 +286,8 @@
     <MESSAGE value="configurações do eclipse" />
     <MESSAGE value="Merge branch 'dev' of https://github.com/jeffjras/siscac into dev&#10;&#10;# Conflicts:&#10;#&#9;pom.xml" />
     <MESSAGE value="relatorioutil e vincular campanha a acao" />
-    <option name="LAST_COMMIT_MESSAGE" value="relatorioutil e vincular campanha a acao" />
+    <MESSAGE value="merge com andré" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge com andré" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/br/org/centrocac/bean/ColaboradorBean.java">
@@ -304,7 +317,7 @@
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
-          <caret line="195" column="21" selection-start-line="195" selection-start-column="21" selection-end-line="195" selection-end-column="21" />
+          <caret line="208" column="21" selection-start-line="208" selection-start-column="21" selection-end-line="208" selection-end-column="21" />
         </state>
       </provider>
     </entry>
