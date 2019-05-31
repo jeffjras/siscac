@@ -42,7 +42,7 @@
                         <f:facet name="header">
                             Campanhas
                         </f:facet>
-                        <p:column headerText="Cód.">
+                        <p:column headerText="Cód." width="50px;">
                             <h:outputText value="#{item.id}" />
                         </p:column>
                         <p:column headerText="Nome">
@@ -61,13 +61,15 @@
                             <h:outputText value="#{item.arrecadado}" />
                         </p:column>
                         <p:column headerText="Itens">
-                            <p:button icon="pi pi-list" value="Itens" outcome="itemCampanha">
-                                <f:param name="id" value="#{item.id}" />
-                            </p:button>
-                            <p:commandButton id="linkVinculo" icon="ui-icon-group" immediate="true"
-                                             alt="Gerenciar ações" value="Vincular" title="Gerenciar ações" 
-                                             action="#{listaCampanhaBean.goToVincularCampanha(item)}">
-                            </p:commandButton>
+                            <p:row>
+                                <p:button icon="pi pi-list" value="Itens" outcome="itemCampanha">
+                                    <f:param name="id" value="#{item.id}" />
+                                </p:button>
+                                <p:commandButton id="linkVinculo" immediate="true"
+                                                 alt="Gerenciar ações" value="Vincular" title="Gerenciar ações" 
+                                                 action="#{listaCampanhaBean.goToVincularCampanha(item)}">
+                                </p:commandButton>
+                            </p:row>
                         </p:column>
                         <p:column style="width:32px;">
                             <p:button icon="pi pi-pencil" title="Editar" outcome="campanha" >
