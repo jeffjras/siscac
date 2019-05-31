@@ -82,6 +82,9 @@ public class Acao implements Serializable {
     @ManyToMany(mappedBy = "acaoList")
     private List<Colaborador> voluntariosList;
 
+    @ManyToMany(mappedBy = "acaoList")
+    private List<Campanha> campanhasList;
+
     public Acao() {
     }
 
@@ -163,6 +166,15 @@ public class Acao implements Serializable {
         this.voluntariosList = voluntariosList;
     }
 
+    public List<Campanha> getCampanhasList() {
+        return campanhasList;
+    }
+
+    public void setCampanhasList(List<Campanha> campanhasList) {
+        this.campanhasList = campanhasList;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -208,9 +220,6 @@ public class Acao implements Serializable {
         }
         return true;
     }
-
-    
-    
 
     @Override
     public String toString() {

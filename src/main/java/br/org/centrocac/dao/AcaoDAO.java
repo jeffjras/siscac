@@ -6,6 +6,7 @@
 package br.org.centrocac.dao;
 
 import br.org.centrocac.entidade.Acao;
+import br.org.centrocac.entidade.Campanha;
 import br.org.centrocac.entidade.Colaborador;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -54,6 +55,23 @@ public class AcaoDAO extends GenericDAO<Acao> {
         String sql = "SELECT * FROM acao a INNER JOIN colaborador_acao ca on ca.acao_id = a.id where ca.colaborador_id = ?";
         Query query = em.createNativeQuery(sql, Acao.class);
         query.setParameter(1, voluntario.getId());
+        List<Acao> resposta = null;
+
+        try {
+            resposta = (List<Acao>) query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        } finally {
+            em.close();
+        }
+        return resposta;
+    }
+    
+    public List<Acao> obterTodosAcoesDisponiveisParaCampanha(Integer campanhaId) {
+        EntityManager em = getEntityManager();
+        String sql = "SELECT * FROM acao a INNER JOIN campanha_acao ca on ca.acao_id = a.id where ca.campanha_id = ?";
+        Query query = em.createNativeQuery(sql, Acao.class);
+        query.setParameter(1, campanhaId);
         List<Acao> resposta = null;
 
         try {
